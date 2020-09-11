@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+html{
+    background: #333;
+}
+
+
+img#schedule{
+    max-width: 50%;
+    border:2px solid black;
+    border-radius: 25px;
+    filter: invert(1);
+}
