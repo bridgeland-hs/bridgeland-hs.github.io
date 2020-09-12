@@ -157,7 +157,7 @@ function timeLoopAndUpdate(d = new Date()) {
     `
     }
 
-    document.querySelector("#schedule-timings").innerHTML = HTMLOut
+    document.querySelector("#schedule").innerHTML = HTMLOut
 
 
 }

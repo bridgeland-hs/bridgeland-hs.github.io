@@ -1,21 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro");
+
 * {
     margin: 0;
     padding: 0;
     color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: none;
 }
 
 html {
     background: #333;
+    width: 100vw;
 }
 
-.subtitle {
+header {
+    width: 100vw;
+    display: flex;
+    border-bottom: 3px solid white;
+}
+
+header h1 {
+    margin: auto;
+    padding: .5em 0;
+    font-size: 3em;
+}
+
+a:hover{
+    color: #ddd
+}
+
+.content{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+
+#schedule{
+    width: 45%;
+    height: 100%;
+    display: flexbox;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+}
+
+#schedule h2{
+    font-weight: bold;
+    font-size: 4em;
     padding-top: .5em;
 }
 
-img#schedule {
-    min-width: 400px;
-    max-width: 85%;
+#schedule h3{
+    font-weight: normal;
+    font-size: 2.5em;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+img#schedule-img {
+    width: 45%;
     border: 2px solid black;
     border-radius: 25px;
     filter: invert(1);
+    display: inline-block;
+}
+
+
+@media (max-width: 800px){
+    img#schedule-img{
+        display: none;
+    }
+    #schedule{
+        width: 100%;
+    }
 }
