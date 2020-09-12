@@ -183,6 +183,28 @@ function createClass(name, start, end) {
 function formatTime(mins) {
     return `${String(Math.floor(mins/60)).padStart(2, 0)}:${String(mins % 60).padStart(2, 0)}`;
 }
+
+function resize (){
+    document.querySelector("p#w").innerText = window.innerWidth;
+    document.querySelector("p#h").innerText = window.innerHeight;
+    
+    if(window.innerHeight*1.1>window.innerWidth){
+        document.querySelector("div.content").style.display = "block"; //justify-content: space-between;
+        document.querySelector("#schedule-img").style.width = "85%"
+
+    }else{
+        document.querySelector("div.content").style = "";
+        document.querySelector("#schedule-img").style = "";
+
+    }
+    
+}
+window.onresize = resize;
+resize();
+
+
 console.log(`Page Loaded in ${new Date() - currentDate}ms`);
+
+
 
 timeLoopAndUpdate(time("8:00"));
