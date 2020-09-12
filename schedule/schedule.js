@@ -1,4 +1,8 @@
-const currentDate = new Date();
+const currentDate = new Date(2020, 08, 11);
+const lunchSel = document.querySelector("#lunch");
+if(location.hash.match(/\#[abc]$/i)){
+    lunchSel.value = location.hash[1];
+}
 const schedule = {
     "regular": {
         "before_lunch": [
@@ -37,7 +41,7 @@ const schedule = {
     "advisory": ["7:20", "8:06"]
 }
 const currentSchedule = currentDate.getDay() == 3 ? schedule.advisory : schedule.regular;
-let lunch = "c";
+let lunch = lunchSel.value;
 
 // const schedule = {
 //     regular: ["7:20", "8:11"],
@@ -117,6 +121,10 @@ function timeLeft(d = new Date()) {
 }
 
 function timeLoopAndUpdate(d = new Date()) {
+    lunchSel.value=lunch;
+    location.hash = "#" + lunchSel.value;
+
+
     info = timeLeft(d);
     // document.querySelector("#time-left").innerText = formatTime(info.currentPdTimeLeft);
     // document.querySelector("#current-period").innerText = info.currentPd.name;
@@ -207,4 +215,4 @@ console.log(`Page Loaded in ${new Date() - currentDate}ms`);
 
 
 
-timeLoopAndUpdate(time("8:00"));
+timeLoopAndUpdate(time("11:10"));

@@ -14,19 +14,27 @@
         <h1 class="title"><a href="../">Bridgeland HS</a></h1>
     </header>
     <!-- <h2 class="subtitle">Period:</h2>
-    <h3 id="current-period">0</h3>
-
-    <h2 class="subtitle">Time Left:</h2>
-    <h3 id="time-left">00:00</h3> -->
-
-    <div class="content">
-        <div id="schedule">
-        </div>
-
-        <img id="schedule-img"
+        <h3 id="current-period">0</h3>
+        
+        <h2 class="subtitle">Time Left:</h2>
+        <h3 id="time-left">00:00</h3> -->
+        
+        <div class="content">
+            <div id="schedule">
+            </div>
+            
+            <img id="schedule-img"
             src="https://bridgeland.cfisd.net/application/files/7215/9924/3096/Bridgeland_4_lunch_bell_schedule_20-21_both_longer_7th.jpg"
             alt="Schedule">
-    </div>
+        </div>
+
+        <select name="lunch" id="lunch" oninput="lunch = this.value; timeLoopAndUpdate();">
+            <option value="a">A</option>
+            <option value="b">B</option>
+            <option value="c">C</option>
+        </select>
+
+
 
     <!-- <p id="w"></p><p id="h"></p> -->
     <script src="schedule.js"></script>
