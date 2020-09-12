@@ -1,4 +1,4 @@
-const currentDate = new Date(2020, 08, 11);
+const currentDate = new Date();
 const lunchSel = document.querySelector("#lunch");
 if(location.hash.match(/\#[abc]$/i)){
     lunchSel.value = location.hash[1];
@@ -150,7 +150,7 @@ function timeLoopAndUpdate(d = new Date()) {
         <h2 class="subtitle">Next Period:</h2>
         <h3>${info.nextPd.name}</h3>
         <h2 class="subtitle">Starts At:</h2>
-        <h3 id="time-left">${time(info.nextPd.end)} (In ${formatTime(info.nextPdStartsIn)})</h3>`
+        <h3 id="time-left">${time(info.nextPd.start)} (In ${formatTime(info.nextPdStartsIn)})</h3>`
     } else {
         HTMLOut =
             `<h2 class="subtitle">Period:</h2>
@@ -161,7 +161,7 @@ function timeLoopAndUpdate(d = new Date()) {
     <h2 class="subtitle">Next Period:</h2>
     <h3>${info.nextPd.name}</h3>
     <h2 class="subtitle">Starts At:</h2>
-    <h3 id="time-left">${time(info.nextPd.end)} (In ${formatTime(info.nextPdStartsIn)})</h3>
+    <h3 id="time-left">${time(info.nextPd.start)} (In ${formatTime(info.nextPdStartsIn)})</h3>
     `
     }
 
@@ -215,4 +215,4 @@ console.log(`Page Loaded in ${new Date() - currentDate}ms`);
 
 
 
-timeLoopAndUpdate(time("11:10"));
+timeLoopAndUpdate();
