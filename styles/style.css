@@ -1,17 +1,21 @@
-*{
+* {
     margin: 0;
     padding: 0;
     color: white;
 }
 
-html{
+html {
     background: #333;
 }
 
+.subtitle {
+    padding-top: .5em;
+}
 
-img#schedule{
-    max-width: 50%;
-    border:2px solid black;
+img#schedule {
+    min-width: 400px;
+    max-width: 85%;
+    border: 2px solid black;
     border-radius: 25px;
     filter: invert(1);
 }
