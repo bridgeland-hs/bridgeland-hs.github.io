@@ -185,4 +185,4 @@ function formatTime(mins) {
 }
 console.log(`Page Loaded in ${new Date() - currentDate}ms`);
 
-timeLoopAndUpdate();
+timeLoopAndUpdate(time("8:00"));
