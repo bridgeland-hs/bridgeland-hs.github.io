@@ -185,8 +185,8 @@ function formatTime(mins) {
 }
 
 function resize (){
-    document.querySelector("p#w").innerText = window.innerWidth;
-    document.querySelector("p#h").innerText = window.innerHeight;
+    // document.querySelector("p#w").innerText = window.innerWidth;
+    // document.querySelector("p#h").innerText = window.innerHeight;
     
     if(window.innerHeight*1.1>window.innerWidth){
         document.querySelector("div.content").style.display = "block"; //justify-content: space-between;

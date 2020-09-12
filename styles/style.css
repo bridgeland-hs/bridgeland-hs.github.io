@@ -64,6 +64,7 @@ h3 {
 
 img#schedule-img {
     width: 45%;
+    height: auto;
     border: 2px solid black;
     border-radius: 25px;
     filter: invert(1);
