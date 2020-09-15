@@ -50,7 +50,6 @@ let lunch = lunchSel.value;
 
 
 function timeLeft(d = new Date()) {
-    const t = d; // current date
     // Math.round((time("18:00")-t)/60000) //
 
     if (d.getDay() == 0 || d.getDay() == 6) {
@@ -132,8 +131,10 @@ function timeLoopAndUpdate(d = new Date()) {
     if (!info.inClass) {
         if (info.weekend) {
             HTMLOut = `<h2 class="subtitle">It's ${info.day}, there's no school.</h2>`;
+            document.querySelector("title").innerText = `It's ${info.day}, there's no school.`
         } else if (info.after_school) {
             HTMLOut = `<h2 class="subtitle">School's over for today!</h2>`;
+            document.querySelector("title").innerText = `School Over For Today!`
         } else if (info.before_school) {
             HTMLOut = `<h2 class="subtitle">School hasn't started yet.<h2>
     <h2 class="subtitle">Next Period:</h2>
@@ -141,8 +142,10 @@ function timeLoopAndUpdate(d = new Date()) {
     <h2 class="subtitle">Starts At:</h2>
     <h3 id="time-left">7:20 (In ${formatTime(info.tl)})</h3>
     `
+    document.querySelector("title").innerText = `School Hasn't Started Yet!`
         }
     } else if (info.currentPd.name=="Passing") {
+        document.querySelector("title").innerText = `Period ${info.nextPd.name} starts in ${formatTime(info.nextPdStartsIn)}`
         HTMLOut = `
         <h2 class="subtitle">Period:</h2>
         <h3>${info.currentPd.name}</h3>
@@ -163,6 +166,7 @@ function timeLoopAndUpdate(d = new Date()) {
     <h2 class="subtitle">Starts At:</h2>
     <h3 id="time-left">${time(info.nextPd.start)} (In ${formatTime(info.nextPdStartsIn)})</h3>
     `
+    document.querySelector("title").innerText = `Period ${info.currentPd.name} : ${formatTime(info.currentPdTimeLeft)}`
     }
 
     document.querySelector("#schedule").innerHTML = HTMLOut
@@ -175,7 +179,7 @@ function time(t) {
     if (typeof t == "string") {
         return new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), t.split(':')[0], t.split(':')[1])
     } else {
-        return formatTime(t.getHours() * 60 + t.getMinutes());
+        return formatTime(t.getHours() * 60 + t.getMinutes() + Math.round(t.getSecond()/30));
     }
 }
 
