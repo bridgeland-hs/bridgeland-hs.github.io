@@ -179,7 +179,7 @@ function time(t) {
     if (typeof t == "string") {
         return new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), t.split(':')[0], t.split(':')[1])
     } else {
-        return formatTime(t.getHours() * 60 + t.getMinutes() + Math.round(t.getSecond()/30));
+        return formatTime(t.getHours() * 60 + t.getMinutes() + Math.round(t.getSeconds()/30));
     }
 }
 
