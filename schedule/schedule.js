@@ -2,35 +2,40 @@ const currentDate = new Date();
 const lunchSel = document.querySelector("#lunch");
 const toggle12hr = document.querySelector("#time");
 
-hash = location.hash.split("#");
-if (hash[0].match(/[abc]$/i)) {
-    lunchSel.value = location.hash[1];
-}
+// hash = location.hash.split("#");
+// if (hash[0].match(/[abc]$/i)) {
+//     lunchSel.value = location.hash[1];
+// }
 var searches = {};
-for (let i of location.search.substr(1).split("&")){
+for (let i of location.search.substr(1).split("&")) {
     let x = i.split("=");
-    if(x.length == 2){
+    if (x.length == 2) {
         searches[x[0]] = x[1];
     }
 }
 
 
 
-searches.twelveHour = searches.twelveHour ? searches.twelveHour : false; 
-for(let k in searches){
-    if(searches[k] == "true" || searches[k] == "false"){
+searches.twelveHour = searches.twelveHour ? searches.twelveHour : false;
+for (let k in searches) {
+    if (searches[k] == "true" || searches[k] == "false") {
         searches[k] = searches[k] == "true";
     }
 }
-searches.update = function(){
+searches.update = function () {
     let s = "?";
-    for(let k in searches){
-        if (k != "update"){
+    for (let k in searches) {
+        if (k != "update") {
             s += k + "=" + searches[k] + "&";
         }
-    } 
+    }
     location.search = s;
 }
+
+if (searches.lunch == undefined || !searches.lunch.matches(/[abc]$/i)){
+    searches.lunch = "a";
+}
+lunchSel.value = searches.lunch;
 
 const schedule = {
     "regular": {
@@ -39,7 +44,7 @@ const schedule = {
             createClass("2", "8:17", "9:13"),
             createClass("3", "9:19", "10:10"),
         ],
-        
+
         "lunch_a": [
             createClass("lunch", "10:10", "10:40"),
             createClass("4", "10:49", "11:39"),
@@ -74,7 +79,7 @@ const schedule = {
             createClass("Advisory", "9:03", "9:33"),
             createClass("3", "9:39", "10:25"),
         ],
-        
+
         "lunch_a": [
             createClass("lunch", "10:25", "10:56"),
             createClass("4", "11:02", "11:50"),
@@ -109,14 +114,14 @@ let twelveHr = toggle12hr.checked;
 let lunch = lunchSel.value;
 
 // const schedule = {
-    //     regular: ["7:20", "8:11"],
+//     regular: ["7:20", "8:11"],
 //     advisory: ["7:20", "8:06"],
 // }
 
 
 function timeLeft(d = new Date()) {
     // Math.round((time("18:00")-t)/60000) //
-    
+
     if (d.getDay() == 0 || d.getDay() == 6) {
         return {
             inClass: false,
@@ -132,7 +137,7 @@ function timeLeft(d = new Date()) {
                 after_school: false,
                 tl
             };
-            
+
         } else if (Math.round((currentSchedule.after_lunch[1].end - d) / 60000) < 0) {
             return {
                 inClass: false,
@@ -150,7 +155,7 @@ function timeLeft(d = new Date()) {
             let nextPd = {
                 name: "none"
             };
-            for (var arr of ["before_lunch", "lunch_" + lunch, "after_lunch"]) {
+            for (var arr of ["before_lunch", "lunch_" + searches.lunch, "after_lunch"]) {
                 for (var c of currentSchedule[arr]) {
                     const minsStart = Math.round((c.start - d) / 60000);
                     const minsEnd = Math.round((c.end - d) / 60000);
@@ -198,13 +203,13 @@ function timeLoopAndUpdate(d = new Date()) {
     prevSearches = searches;
     searches.lunch = lunchSel.value;
 
-    if(searches.lunch){
+    if (searches.lunch) {
         lunchSel.value = searches.lunch;
     }
-    if(searches.twelveHour != undefined){
+    if (searches.twelveHour != undefined) {
         toggle12hr.checked = searches.twelveHour
     }
-    if (searches != prevSearches){
+    if (searches != prevSearches) {
         searches.update();
     }
 
@@ -279,9 +284,9 @@ function createClass(name, start, end) {
 }
 
 function formatTime(mins, twelveHour = false) {
-    if(twelveHour){
+    if (twelveHour) {
         return `${Math.floor(mins/60) % 12}:${String(mins % 60).padStart(2, 0)}`;
-    }else{
+    } else {
         return `${String(Math.floor(mins/60)).padStart(2, 0)}:${String(mins % 60).padStart(2, 0)}`;
     }
 }
