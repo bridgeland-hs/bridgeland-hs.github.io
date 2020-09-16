@@ -1,8 +1,37 @@
 const currentDate = new Date();
 const lunchSel = document.querySelector("#lunch");
-if(location.hash.match(/\#[abc]$/i)){
+const toggle12hr = document.querySelector("#time");
+
+hash = location.hash.split("#");
+if (hash[0].match(/[abc]$/i)) {
     lunchSel.value = location.hash[1];
 }
+var searches = {};
+for (let i of location.search.substr(1).split("&")){
+    let x = i.split("=");
+    if(x.length == 2){
+        searches[x[0]] = x[1];
+    }
+}
+
+
+
+searches.twelveHour = searches.twelveHour ? searches.twelveHour : false; 
+for(let k in searches){
+    if(searches[k] == "true" || searches[k] == "false"){
+        searches[k] = searches[k] == "true";
+    }
+}
+searches.update = function(){
+    let s = "?";
+    for(let k in searches){
+        if (k != "update"){
+            s += k + "=" + searches[k] + "&";
+        }
+    } 
+    location.search = s;
+}
+
 const schedule = {
     "regular": {
         "before_lunch": [
@@ -10,7 +39,7 @@ const schedule = {
             createClass("2", "8:17", "9:13"),
             createClass("3", "9:19", "10:10"),
         ],
-
+        
         "lunch_a": [
             createClass("lunch", "10:10", "10:40"),
             createClass("4", "10:49", "11:39"),
@@ -41,17 +70,19 @@ const schedule = {
     "advisory": ["7:20", "8:06"]
 }
 const currentSchedule = currentDate.getDay() == 3 ? schedule.advisory : schedule.regular;
+
+let twelveHr = toggle12hr.checked;
 let lunch = lunchSel.value;
 
 // const schedule = {
-//     regular: ["7:20", "8:11"],
+    //     regular: ["7:20", "8:11"],
 //     advisory: ["7:20", "8:06"],
 // }
 
 
 function timeLeft(d = new Date()) {
     // Math.round((time("18:00")-t)/60000) //
-
+    
     if (d.getDay() == 0 || d.getDay() == 6) {
         return {
             inClass: false,
@@ -67,7 +98,7 @@ function timeLeft(d = new Date()) {
                 after_school: false,
                 tl
             };
-
+            
         } else if (Math.round((currentSchedule.after_lunch[1].end - d) / 60000) < 0) {
             return {
                 inClass: false,
@@ -103,6 +134,15 @@ function timeLeft(d = new Date()) {
             } else {
                 nextPd = startTimes[0];
             }
+            if (currentPd.name == "7") {
+                nextPd = {
+                    name: "none",
+                    inClass: false,
+                    before_school: false,
+                    after_school: true
+
+                }
+            }
             console.log(startTimes);
             let currentPdTimeLeft = Math.round((currentPd.end - d) / 60000);
             let nextPdStartsIn = Math.round((nextPd.start - d) / 60000);
@@ -120,8 +160,19 @@ function timeLeft(d = new Date()) {
 }
 
 function timeLoopAndUpdate(d = new Date()) {
-    lunchSel.value=lunch;
-    location.hash = "#" + lunchSel.value;
+    lunchSel.value = searches.lunch;
+    prevSearches = searches;
+    searches.lunch = lunchSel.value;
+
+    if(searches.lunch){
+        lunchSel.value = searches.lunch;
+    }
+    if(searches.twelveHour != undefined){
+        toggle12hr.checked = searches.twelveHour
+    }
+    if (searches != prevSearches){
+        searches.update();
+    }
 
 
     info = timeLeft(d);
@@ -142,9 +193,9 @@ function timeLoopAndUpdate(d = new Date()) {
     <h2 class="subtitle">Starts At:</h2>
     <h3 id="time-left">7:20 (In ${formatTime(info.tl)})</h3>
     `
-    document.querySelector("title").innerText = `School Hasn't Started Yet!`
+            document.querySelector("title").innerText = `School Hasn't Started Yet!`
         }
-    } else if (info.currentPd.name=="Passing") {
+    } else if (info.currentPd.name == "Passing") {
         document.querySelector("title").innerText = `Period ${info.nextPd.name} starts in ${formatTime(info.nextPdStartsIn)}`
         HTMLOut = `
         <h2 class="subtitle">Period:</h2>
@@ -159,16 +210,17 @@ function timeLoopAndUpdate(d = new Date()) {
             `<h2 class="subtitle">Period:</h2>
     <h3 id="current-period">${info.currentPd.name}</h3>
     <h2 class="subtitle">Ends At:</h2>
-    <h3 id="time-left">${time(info.currentPd.end)} (${formatTime(info.currentPdTimeLeft)} left)</h3>
-
-    <h2 class="subtitle">Next Period:</h2>
+    <h3 id="time-left">${time(info.currentPd.end)} (${formatTime(info.currentPdTimeLeft)} left)</h3>`
+        if (info.nextPd.inClass != false) {
+            HTMLOut += `<h2 class="subtitle">Next Period:</h2>
     <h3>${info.nextPd.name}</h3>
     <h2 class="subtitle">Starts At:</h2>
     <h3 id="time-left">${time(info.nextPd.start)} (In ${formatTime(info.nextPdStartsIn)})</h3>
     `
-    document.querySelector("title").innerText = `Period ${info.currentPd.name} : ${formatTime(info.currentPdTimeLeft)}`
+        }
+        document.querySelector("title").innerText = `Period ${info.currentPd.name} : ${formatTime(info.currentPdTimeLeft)}`
     }
-
+    console.log(HTMLOut);
     document.querySelector("#schedule").innerHTML = HTMLOut
 
 
@@ -179,7 +231,7 @@ function time(t) {
     if (typeof t == "string") {
         return new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), t.split(':')[0], t.split(':')[1])
     } else {
-        return formatTime(t.getHours() * 60 + t.getMinutes() + Math.round(t.getSeconds()/30));
+        return formatTime(t.getHours() * 60 + t.getMinutes() + Math.round(t.getSeconds() / 30), searches.twelveHour);
     }
 }
 
@@ -192,24 +244,28 @@ function createClass(name, start, end) {
     }
 }
 
-function formatTime(mins) {
-    return `${String(Math.floor(mins/60)).padStart(2, 0)}:${String(mins % 60).padStart(2, 0)}`;
+function formatTime(mins, twelveHour = false) {
+    if(twelveHour){
+        return `${Math.floor(mins/60) % 12}:${String(mins % 60).padStart(2, 0)}`;
+    }else{
+        return `${String(Math.floor(mins/60)).padStart(2, 0)}:${String(mins % 60).padStart(2, 0)}`;
+    }
 }
 
-function resize (){
+function resize() {
     // document.querySelector("p#w").innerText = window.innerWidth;
     // document.querySelector("p#h").innerText = window.innerHeight;
-    
-    if(window.innerHeight*1.1>window.innerWidth){
+
+    if (window.innerHeight * 1.1 > window.innerWidth) {
         document.querySelector("div.content").style.display = "block"; //justify-content: space-between;
         document.querySelector("#schedule-img").style.width = "85%"
 
-    }else{
+    } else {
         document.querySelector("div.content").style = "";
         document.querySelector("#schedule-img").style = "";
 
     }
-    
+
 }
 window.onresize = resize;
 resize();

@@ -18,22 +18,28 @@
         
         <h2 class="subtitle">Time Left:</h2>
         <h3 id="time-left">00:00</h3> -->
-        
-        <div class="content">
-            <div id="schedule">
-            </div>
-            
-            <img id="schedule-img"
-            src="https://bridgeland.cfisd.net/application/files/7215/9924/3096/Bridgeland_4_lunch_bell_schedule_20-21_both_longer_7th.jpg"
-            alt="Schedule">
+
+    <div class="content">
+        <div id="schedule">
         </div>
 
-        <select name="lunch" id="lunch" oninput="lunch = this.value; timeLoopAndUpdate();">
+        <img id="schedule-img"
+            src="https://bridgeland.cfisd.net/application/files/7215/9924/3096/Bridgeland_4_lunch_bell_schedule_20-21_both_longer_7th.jpg"
+            alt="Schedule">
+
+    </div>
+    <label class="test">
+        Lunch:
+        <select name="lunch" id="lunch" oninput="searches.lunch = this.value; searches.update();">
             <option value="a">A</option>
             <option value="b">B</option>
             <option value="c">C</option>
             <option value="d">D</option>
         </select>
+        <br>
+        12 Hour Time:
+        <input type="checkbox" id="time" oninput="searches.twelveHour = this.checked; searches.update();">
+    </label>
 
 
 

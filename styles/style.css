@@ -29,6 +29,7 @@ a:hover{
     color: #ddd
 }
 
+
 .content{
     max-height: 100%;
     display: flex;
@@ -73,12 +74,20 @@ img#schedule-img {
     margin: 2em;
 }
 
-select{
-    background: #111;
-    font-size: 2em;
+.test{
     position: fixed;
-    top: 4em;
+    bottom: 0vh;
+    transform: translate(0%, -50%);
+    font-size: 2em;
+}
 
+.test select{
+    background: #111;
+    font-size: 1.1em;
+}
+
+.test input{
+    transform: scale(2);
 }
 
 /* @media (max-width: 800px){
