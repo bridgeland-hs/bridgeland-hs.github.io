@@ -32,7 +32,7 @@ searches.update = function () {
     location.search = s;
 }
 
-if (searches.lunch == undefined || !searches.lunch.matches(/[abc]$/i)){
+if (searches.lunch == undefined){
     searches.lunch = "a";
 }
 lunchSel.value = searches.lunch;
