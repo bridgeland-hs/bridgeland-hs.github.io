@@ -67,7 +67,41 @@ const schedule = {
             createClass("7", "13:53", "14:50"),
         ]
     },
-    "advisory": ["7:20", "8:06"]
+    "advisory": {
+        "before_lunch": [
+            createClass("1", "7:20", "8:06"),
+            createClass("2", "8:12", "9:03"),
+            createClass("Advisory", "9:03", "9:33"),
+            createClass("3", "9:39", "10:25"),
+        ],
+        
+        "lunch_a": [
+            createClass("lunch", "10:25", "10:56"),
+            createClass("4", "11:02", "11:50"),
+            createClass("5", "11:56", "12:59"),
+        ],
+        "lunch_b": [
+            createClass("4", "10:31", "11:19"),
+            createClass("lunch", "11:19", "11:50"),
+            createClass("5", "11:56", "12:59"),
+        ],
+        "lunch_c": [
+            createClass("4", "10:31", "11:19"),
+            createClass("5a", "11:25", "11:56"),
+            createClass("lunch", "11:56", "12:26"),
+            createClass("5b", "12:32", "12:59"),
+        ],
+        "lunch_d": [
+            createClass("4", "10:31", "11:19"),
+            createClass("5", "11:25", "12:28"),
+            createClass("lunch", "12:28", "12:59"),
+        ],
+
+        "after_lunch": [
+            createClass("6", "13:05", "13:51"),
+            createClass("7", "13:57", "14:50"),
+        ]
+    }
 }
 const currentSchedule = currentDate.getDay() == 3 ? schedule.advisory : schedule.regular;
 
