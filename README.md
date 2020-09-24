@@ -1,2 +1,2 @@
 # bridgeland-hs.github.io
-Utilities for BHS
+A simple website that has some small things to make life at Bridgeland High School Easier.
