@@ -1,16 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Montserrat', Verdana, sans-serif;
     text-decoration: none;
 }
 
 html {
-    background: #333;
+    background: linear-gradient(#555, #222);
     width: 100vw;
+    height: 100vh;
 }
 
 header {
@@ -69,7 +71,7 @@ img#schedule-img {
     height: auto;
     border: 2px solid black;
     border-radius: 25px;
-    filter: invert(1);
+    filter: invert(1) grayscale();
     display: inline-block;
     margin: 2em;
 }
@@ -90,11 +92,11 @@ img#schedule-img {
     transform: scale(2);
 }
 
-/* @media (max-width: 800px){
-    img#schedule-img{
-        display: none;
-    }
-    #schedule{
-        width: 100%;
-    }
-} */
+#clock {
+    padding: 1em;
+    color: lime;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 3em !important;
+    justify-content: center;
+    display: flex;
+}
