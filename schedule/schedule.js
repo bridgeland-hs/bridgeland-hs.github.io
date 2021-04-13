@@ -1,4 +1,4 @@
-const currentDate = new Date();
+let currentDate = new Date();
 const lunchSel = document.querySelector('#lunch');
 const toggle12hr = document.querySelector('#time');
 
@@ -198,6 +198,11 @@ function timeLeft(d = new Date()) {
 }
 
 function timeLoopAndUpdate(d = new Date()) {
+	if(currentDate.getDate() != (new Date()).getDate()) {
+		currentDate = new Date();
+	}
+
+
 	lunchSel.value = searches.lunch;
 	prevSearches = searches;
 	searches.lunch = lunchSel.value;
@@ -307,14 +312,16 @@ function formatTime(seconds, twelveHour = false) {
 	seconds += '';
 
 	let hour = seconds / 3600;
-	let min = (hour * 60) % 60;
-	let sec = (min * 60) % 60;
+	let min = Math.floor(seconds / 60) % 60;
+	let sec = seconds % 60;
 
 	hour = twelveHour ? (hour % 12 === 0 ? 12 : 0) : hour;
 
-	hour = (Math.ceil(hour) + '').padStart(2, 0);
-	min = (Math.ceil(min) + '').padStart(2, 0);
-	sec = (Math.ceil(sec) + '').padStart(2, 0);
+	hour = Math.floor(hour);
+
+	hour = (hour + '').padStart(2, 0);
+	min = (min + '').padStart(2, 0);
+	sec = (sec + '').padStart(2, 0);
 
 	return `${hour}:${min}:${sec}`;
 }
