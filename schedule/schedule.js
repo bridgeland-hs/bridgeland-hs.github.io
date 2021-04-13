@@ -4,6 +4,12 @@ const toggle12hr = document.querySelector('#time');
 
 const clock = document.querySelector('#clock');
 
+const offsetEl = document.querySelector('#offset');
+
+let offset = 0;
+
+offsetEl.addEventListener('input', (e) => (offset = offsetEl.valueAsNumber));
+
 // hash = location.hash.split("#");
 // if (hash[0].match(/[abc]$/i)) {
 //     lunchSel.value = location.hash[1];
@@ -198,10 +204,9 @@ function timeLeft(d = new Date()) {
 }
 
 function timeLoopAndUpdate(d = new Date()) {
-	if(currentDate.getDate() != (new Date()).getDate()) {
+	if (currentDate.getDate() != new Date().getDate()) {
 		currentDate = new Date();
 	}
-
 
 	lunchSel.value = searches.lunch;
 	prevSearches = searches;
@@ -276,7 +281,7 @@ function timeLoopAndUpdate(d = new Date()) {
 		} : ${formatTime(info.currentPdTimeLeft)}`;
 	}
 	document.querySelector('#schedule').innerHTML = HTMLOut;
-    updateClock();
+	updateClock();
 }
 
 function time(t) {
@@ -308,7 +313,7 @@ function createClass(name, start, end) {
 }
 
 function formatTime(seconds, twelveHour = false) {
-	seconds += !searches.offset ? 0 : +searches.offset;
+	seconds += offset;
 
 	let hour = seconds / 3600;
 	let min = Math.floor(seconds / 60) % 60;
@@ -318,11 +323,11 @@ function formatTime(seconds, twelveHour = false) {
 
 	hour = Math.floor(hour);
 
-	hour = (hour + '').padStart(2, 0);
-	min = (min + '').padStart(2, 0);
+	let hourS = (hour + '').padStart(2, 0);
+	min = min + '';
 	sec = (sec + '').padStart(2, 0);
 
-	return `${hour}:${min}:${sec}`;
+	return hour == 0 ? `${min}:${sec}` : `${hour}:${min.padStart(2, 0)}:${sec}`;
 }
 
 function updateClock() {
@@ -347,7 +352,7 @@ function resize() {
 	// document.querySelector("p#h").innerText = window.innerHeight;
 
 	if (window.innerHeight * 1.1 > window.innerWidth) {
-		document.querySelector('div.content').style.display = 'block'; //justify-content: space-between;
+		document.querySelector('div.content').style.display = 'block'; // justify-content: space-between;
 		document.querySelector('#schedule-img').style.width = '85%';
 	} else {
 		document.querySelector('div.content').style = '';
