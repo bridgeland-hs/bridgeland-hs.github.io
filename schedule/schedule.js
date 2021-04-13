@@ -309,11 +309,10 @@ function createClass(name, start, end) {
 
 function formatTime(seconds, twelveHour = false) {
 	seconds += !searches.offset ? 0 : +searches.offset;
-	seconds += '';
 
 	let hour = seconds / 3600;
 	let min = Math.floor(seconds / 60) % 60;
-	let sec = seconds % 60;
+	let sec = Math.floor(seconds % 60);
 
 	hour = twelveHour ? (hour % 12 === 0 ? 12 : 0) : hour;
 
@@ -330,7 +329,7 @@ function updateClock() {
 	const date = new Date();
 
 	const hr =
-		schedule.twelveHour || false
+		searches.twelveHour || false
 			? date.getHours() % 12 === 0
 				? 12
 				: 0
