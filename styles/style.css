@@ -90,8 +90,8 @@ img#schedule-img {
     font-size: 1.1em;
 }
 
-.settings input#time{
-    transform: scale(2);
+.settings input[type=checkbox]{
+    transform: scale(4);
 }
 
 #clock {

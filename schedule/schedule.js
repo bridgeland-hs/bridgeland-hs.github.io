@@ -1,6 +1,7 @@
 let currentDate = new Date();
 const lunchSel = document.querySelector('#lunch');
 const toggle12hr = document.querySelector('#time');
+const advisoryCheck = document.querySelector('#advisory');
 
 const clock = document.querySelector('#clock');
 
@@ -21,8 +22,10 @@ for (let i of location.search.substr(1).split('&')) {
 		searches[x[0]] = x[1];
 	}
 }
+advisoryCheck.checked = searches.advisory == 'true';
+toggle12hr.checked = searches.twelveHour == 'true';
 
-searches.twelveHour = searches.twelveHour ? searches.twelveHour : false;
+searches.twelveHour = searches.twelveHour ?? false;
 for (let k in searches) {
 	if (searches[k] == 'true' || searches[k] == 'false') {
 		searches[k] = searches[k] == 'true';
@@ -46,36 +49,36 @@ lunchSel.value = searches.lunch;
 const schedule = {
 	regular: {
 		before_lunch: [
-			createClass('1', '7:20', '8:11'),
-			createClass('2', '8:17', '9:13'),
-			createClass('3', '9:19', '10:10'),
+			createClass('1', '7:20', '8:12'),
+			createClass('2', '8:18', '9:15'),
+			createClass('3', '9:21', '10:13'),
 		],
 
 		lunch_a: [
-			createClass('lunch', '10:10', '10:40'),
-			createClass('4', '10:49', '11:39'),
-			createClass('5', '11:45', '12:50'),
+			createClass('lunch', '10:13', '10:43'),
+			createClass('4', '10:49', '11:42'),
+			createClass('5', '11:48', '12:54'),
 		],
 		lunch_b: [
-			createClass('4', '10:16', '11:09'),
-			createClass('lunch', '11:09', '11:39'),
-			createClass('5', '11:45', '12:50'),
+			createClass('4', '10:19', '11:12'),
+			createClass('lunch', '11:12', '11:42'),
+			createClass('5', '11:48', '12:54'),
 		],
 		lunch_c: [
-			createClass('4', '10:16', '11:09'),
-			createClass('5a', '11:15', '11:44'),
-			createClass('lunch', '11:44', '12:14'),
-			createClass('5b', '12:20', '12:50'),
+			createClass('4', '10:19', '11:12'),
+			createClass('5a', '11:18', '11:48'),
+			createClass('lunch', '11:48', '12:18'),
+			createClass('5b', '12:24', '12:54'),
 		],
 		lunch_d: [
-			createClass('4', '10:16', '11:09'),
-			createClass('5', '11:15', '12:20'),
-			createClass('lunch', '12:20', '12:50'),
+			createClass('4', '10:19', '11:12'),
+			createClass('5', '11:18', '12:24'),
+			createClass('lunch', '12:24', '12:54'),
 		],
 
 		after_lunch: [
-			createClass('6', '12:56', '13:47'),
-			createClass('7', '13:53', '14:50'),
+			createClass('6', '13:00', '13:52'),
+			createClass('7', '13:58', '14:50'),
 		],
 	},
 	advisory: {
@@ -87,14 +90,14 @@ const schedule = {
 		],
 
 		lunch_a: [
-			createClass('lunch', '10:25', '10:56'),
-			createClass('4', '11:02', '11:50'),
+			createClass('lunch', '10:25', '10:55'),
+			createClass('4', '11:01', '11:50'),
 			createClass('5', '11:56', '12:59'),
 		],
 		lunch_b: [
 			createClass('4', '10:31', '11:19'),
-			createClass('lunch', '11:19', '11:50'),
-			createClass('5', '11:56', '12:59'),
+			createClass('lunch', '11:19', '11:49'),
+			createClass('5', '11:55', '12:59'),
 		],
 		lunch_c: [
 			createClass('4', '10:31', '11:19'),
@@ -104,19 +107,20 @@ const schedule = {
 		],
 		lunch_d: [
 			createClass('4', '10:31', '11:19'),
-			createClass('5', '11:25', '12:28'),
-			createClass('lunch', '12:28', '12:59'),
+			createClass('5', '11:25', '12:29'),
+			createClass('lunch', '12:29', '12:59'),
 		],
 
 		after_lunch: [
-			createClass('6', '13:05', '13:51'),
-			createClass('7', '13:57', '14:50'),
+			createClass('6', '13:05', '13:54'),
+			createClass('7', '14:00', '14:50'),
 		],
 	},
 };
 
 // Using 'Let' so that it can be changed with `currentSchedule = schedule.SOMETHING` in the console
 let currentSchedule =
+	searches.advisory || 
 	currentDate.getDay() == 3 ? schedule.advisory : schedule.regular;
 
 let twelveHr = toggle12hr.checked;
@@ -166,7 +170,7 @@ function timeLeft(d = new Date()) {
 					if (currentPd.unset && minsStart <= 0 && minsEnd >= 0)
 						currentPd = c;
 					if (minsStart > 0 || minsEnd > 0) startTimes.push(c);
-					console.log(`${c.name}: ${minsStart}, ${minsEnd}`);
+					// console.log(`${c.name}: ${minsStart}, ${minsEnd}`);
 				}
 			}
 			startTimes.sort((a, b) => {
@@ -186,12 +190,12 @@ function timeLeft(d = new Date()) {
 					after_school: true,
 				};
 			}
-			console.log(startTimes);
+			// console.log(startTimes);
 			let currentPdTimeLeft = (currentPd.end - d) / 1000;
 			let nextPdStartsIn = (nextPd.start - d) / 1000;
-			console.log(
-				`Current Period: ${currentPd.name}, Time Left: ${currentPdTimeLeft}\nNext Period: ${nextPd.name}, Starts in: ${nextPdStartsIn}`
-			);
+			// console.log(
+			// 	`Current Period: ${currentPd.name}, Time Left: ${currentPdTimeLeft}\nNext Period: ${nextPd.name}, Starts in: ${nextPdStartsIn}`
+			// );
 			return {
 				inClass: true,
 				currentPd,
@@ -257,21 +261,21 @@ function timeLoopAndUpdate(d = new Date()) {
         <h2 class="subtitle">Next Period:</h2>
         <h3>${info.nextPd.name}</h3>
         <h2 class="subtitle">Starts At:</h2>
-        <h3 id="time-left">${time(info.nextPd.start)} (In ${formatTime(
+        <h3 id="time-left">${time(info.nextPd.start, true)} (In ${formatTime(
 			info.nextPdStartsIn
 		)})</h3>`;
 	} else {
 		HTMLOut = `<h2 class="subtitle">Period:</h2>
     <h3 id="current-period">${info.currentPd.name}</h3>
     <h2 class="subtitle">Ends At:</h2>
-    <h3 id="time-left">${time(info.currentPd.end)} (${formatTime(
+    <h3 id="time-left">${time(info.currentPd.end, true)} (${formatTime(
 			info.currentPdTimeLeft
 		)} left)</h3>`;
 		if (info.nextPd.inClass != false) {
 			HTMLOut += `<h2 class="subtitle">Next Period:</h2>
     <h3>${info.nextPd.name}</h3>
     <h2 class="subtitle">Starts At:</h2>
-    <h3 id="time-left">${time(info.nextPd.start)} (In ${formatTime(
+    <h3 id="time-left">${time(info.nextPd.start, true)} (In ${formatTime(
 				info.nextPdStartsIn
 			)})</h3>
     `;
