@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="https://ez-css.now.sh"> -->
+    <link rel="favicon" type="image/png" href="./icon.png" />
+    <link rel="icon" type="image/png" href="./icon.png" />
     <link rel="stylesheet" href="../styles/style.css">
     <title>Schedule Thingy</title>
 </head>
@@ -21,8 +23,8 @@
         <img id="schedule-img"
             src="https://www.cfisd.net/cms/lib/TX50000664/Centricity/Domain/1076/2021-2022%20BHS%20Bell%20Schedule.JPG"
             alt="Schedule">
-        </div>
-        <h2 id="clock"></h2>
+    </div>
+    <h2 id="clock"></h2>
     <label class="settings">
         Lunch:
         <select name="lunch" id="lunch" oninput="searches.lunch = this.value; searches.update();">
@@ -37,7 +39,7 @@
         <input type="checkbox" id="time" oninput="searches.twelveHour = this.checked; searches.update();">
         <br>
         <br>
-        Advisory Override: 
+        Advisory Override:
         <input type="checkbox" id="advisory" oninput="searches.advisory = this.checked; searches.update();">
         <br>
         <br>
