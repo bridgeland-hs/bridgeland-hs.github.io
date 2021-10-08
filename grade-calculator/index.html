@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Grade Calculator</title>
+</head>
+
+<body>
+
+    <h1>Grade Calculator</h1>
+
+    <table>
+        <thead>
+            <tr id="headerRow">
+                <th class="">Category</th>
+                <th class="">Student's Points</th>
+                <th class="">/ Maximum Points</th>
+                <th class="">= Percent</th>
+                <th class="">* Category Weight</th>
+                <th class="">= Category Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="dgRow">
+                <td class="">DG</td>
+                <td class=""><input min="0" type="number"></td>
+                <td class=""><input min="0" type="number"></td>
+                <td class="" id="percent"></td>
+                <td class=""><input min="0" type="number" value="20"></td>
+                <td class="" id="points"></td>
+            </tr>
+            <tr id="asRow">
+                <td class="">AS</td>
+                <td class=""><input min="0" type="number"></td>
+                <td class=""><input min="0" type="number"></td>
+                <td class="" id="percent"></td>
+                <td class=""><input min="0" type="number" value="40"></td>
+                <td class="" id="points"></td>
+            </tr>
+            <tr id="mgRow">
+                <td class="">MG</td>
+                <td class=""><input min="0" type="number"></td>
+                <td class=""><input min="0" type="number"></td>
+                <td class="" id="percent"></td>
+                <td class=""><input min="0" type="number" value="40"></td>
+                <td class="" id="points"></td>
+            </tr>
+            <tr id="totalRow">
+                <td class="">Totals</td>
+                <td class="" colspan="3"></td>
+                <td class="" id="weight">100</td>
+                <td class="" id="points"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="./index.js"></script>
+</body>
+
+</html>
