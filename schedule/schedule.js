@@ -1,9 +1,9 @@
 const lunchSel = document.querySelector('#lunch');
 const toggle12hr = document.querySelector('#time');
-
 const clock = document.querySelector('#clock');
-
 const offsetEl = document.querySelector('#offset');
+const image = document.querySelector('#schedule-img');
+const defaultImage = '../image/Default_Schedule.jpg';
 
 let offset = 0;
 
@@ -59,6 +59,7 @@ Object.keys(schedules).forEach(s => {
 scheduleSelect.selected = currentDate.getDay() == 3 ? 'advisory' : 'regular';
 scheduleSelect.addEventListener('change', (e) => {
 	currentSchedule = schedules[scheduleSelect.value];
+	image.src = currentSchedule.image || defaultImage;
 });
 
 function timeLeft(d = new Date()) {

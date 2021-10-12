@@ -103,6 +103,7 @@ const schedules = {
 		]
 	},
     PSAT: {
+		image: '../image/PSAT_Schedule.jpg',
 		before_lunch: [
 			createClass('1', '7:20', '8:23'),
 			createClass('2', '8:29', '10:00'),
