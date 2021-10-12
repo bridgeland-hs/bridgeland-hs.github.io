@@ -25,7 +25,8 @@
             alt="Schedule">
     </div>
     <h2 id="clock"></h2>
-    <label class="settings">
+
+    <div class="settings">
         Lunch:
         <select name="lunch" id="lunch" oninput="searches.lunch = this.value; searches.update();">
             <option value="a">A</option>
@@ -39,17 +40,16 @@
         <input type="checkbox" id="time" oninput="searches.twelveHour = this.checked; searches.update();">
         <br>
         <br>
-        Advisory Override:
-        <input type="checkbox" id="advisory" oninput="searches.advisory = this.checked; searches.update();">
+        Schedule:
+        <select id="schedule-select"></select>
         <br>
         <br>
         Offset:
         <input type="number" id="offset">
-    </label>
+    </div>
 
-
-
-    <!-- <p id="w"></p><p id="h"></p> -->
+    <script src="helper.js"></script>
+    <script src="schedules.js"></script>
     <script src="schedule.js"></script>
 
 </body>
