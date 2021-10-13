@@ -178,9 +178,15 @@ function timeLoopAndUpdate(d = new Date()) {
 		} else if (info.before_school) {
 			HTMLOut = `<h2 class="subtitle">School hasn't started yet.<h2>
     <h2 class="subtitle">Next Period:</h2>
-    <h3>1</h3>
+    <h3 class="output-text"
+ class="output-text"
+ class="output-text"
+ class="output-text">1</h3>
     <h2 class="subtitle">Starts At:</h2>
-    <h3 id="time-left">7:20 (In ${formatTime(info.tl)})</h3>
+    <h3 class="output-text"
+ class="output-text"
+ class="output-text"
+ class="output-text" id="time-left">7:20 (In ${formatTime(info.tl)})</h3>
     `;
 			document.querySelector(
 				'title'
@@ -192,26 +198,47 @@ function timeLoopAndUpdate(d = new Date()) {
 		} starts in ${formatTime(info.nextPdStartsIn)}`;
 		HTMLOut = `
         <h2 class="subtitle">Period:</h2>
-        <h3>${info.currentPd.name}</h3>
+        <h3 class="output-text"
+ class="output-text"
+ class="output-text"
+ class="output-text">${info.currentPd.name}</h3>
 
         <h2 class="subtitle">Next Period:</h2>
-        <h3>${info.nextPd.name}</h3>
+        <h3 class="output-text"
+ class="output-text"
+ class="output-text"
+ class="output-text">${info.nextPd.name}</h3>
         <h2 class="subtitle">Starts At:</h2>
-        <h3 id="time-left">${time(info.nextPd.start, true)} (In ${formatTime(
+        <h3 class="output-text"
+ class="output-text"
+ class="output-text"
+ class="output-text" id="time-left">${time(info.nextPd.start, true)} (In ${formatTime(
 			info.nextPdStartsIn
 		)})</h3>`;
 	} else {
 		HTMLOut = `<h2 class="subtitle">Period:</h2>
-    <h3 id="current-period">${info.currentPd.name}</h3>
+    <h3 class="output-text"
+ class="output-text"
+ class="output-text"
+ class="output-text" id="current-period">${info.currentPd.name}</h3>
     <h2 class="subtitle">Ends At:</h2>
-    <h3 id="time-left">${time(info.currentPd.end, true)} (${formatTime(
+    <h3 class="output-text"
+ class="output-text"
+ class="output-text"
+ class="output-text" id="time-left">${time(info.currentPd.end, true)} (${formatTime(
 			info.currentPdTimeLeft
 		)} left)</h3>`;
 		if (info.nextPd.inClass != false) {
 			HTMLOut += `<h2 class="subtitle">Next Period:</h2>
-    <h3>${info.nextPd.name}</h3>
+    <h3 class="output-text"
+ class="output-text"
+ class="output-text"
+ class="output-text">${info.nextPd.name}</h3>
     <h2 class="subtitle">Starts At:</h2>
-    <h3 id="time-left">${time(info.nextPd.start, true)} (In ${formatTime(
+    <h3 class="output-text"
+ class="output-text"
+ class="output-text"
+ class="output-text" id="time-left">${time(info.nextPd.start, true)} (In ${formatTime(
 				info.nextPdStartsIn
 			)})</h3>
     `;

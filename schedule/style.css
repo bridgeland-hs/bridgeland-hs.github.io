@@ -1,12 +1,17 @@
 img#schedule-img {
-    border: 2px solid gray;
-    border-radius: 25px;
+    /* border: 2px solid gray; */
+    /* border-radius: 25px; */
     filter: invert(1) grayscale();
-    max-width: 30vw;
+    /* max-width: 40vw; */
+    max-height: 50vh;
 }
 
 .settings {
     position: fixed;
     bottom: 1em;
     left: 1em;
+}
+
+.output-text {
+    color: #acacac;
 }
