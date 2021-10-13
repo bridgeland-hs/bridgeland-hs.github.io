@@ -241,20 +241,5 @@ function updateClock() {
 	clock.innerHTML = `<br><br><h2 class="subtitle" id="clock">${hour}:${mins}:${secs}</h2>`;
 }
 
-function resize() {
-	// document.querySelector("p#w").innerText = window.innerWidth;
-	// document.querySelector("p#h").innerText = window.innerHeight;
-
-	if (window.innerHeight * 1.1 > window.innerWidth) {
-		document.querySelector('div.content').style.display = 'block'; // justify-content: space-between;
-		document.querySelector('#schedule-img').style.width = '85%';
-	} else {
-		document.querySelector('div.content').style = '';
-		document.querySelector('#schedule-img').style = '';
-	}
-}
-window.onresize = resize;
-resize();
-
 timeLoopAndUpdate();
 setInterval(timeLoopAndUpdate, 500);

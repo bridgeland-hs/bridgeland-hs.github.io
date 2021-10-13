@@ -1,0 +1,12 @@
+img#schedule-img {
+    border: 2px solid gray;
+    border-radius: 25px;
+    filter: invert(1) grayscale();
+    max-width: 30vw;
+}
+
+.settings {
+    position: fixed;
+    bottom: 1em;
+    left: 1em;
+}
