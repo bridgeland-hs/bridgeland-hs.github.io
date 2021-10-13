@@ -1,5 +1,5 @@
 body {
-    height: 120vh;
+    height: 120vh; /* To prevent the scroll bar from going away when typing */
 }
 
 #list {

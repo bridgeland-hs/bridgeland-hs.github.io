@@ -11,6 +11,6 @@
   - [ ] Redo the styles
 - [ ] Projects
   - [ ] Finish the grade calculator page
-  - [ ] Perhaps something with <https://docs.google.com/spreadsheets/d/1x59dJD34Y7RtS9RaGumSYr7t6tRA0bg9mfBbQQsVO1k>
-  - [ ] Perhaps a list of faculty and a way to search for them
+  - [x] Perhaps something with <https://docs.google.com/spreadsheets/d/1x59dJD34Y7RtS9RaGumSYr7t6tRA0bg9mfBbQQsVO1k>
+  - [x] Perhaps a list of faculty and a way to search for them
 - [ ] Reorganise the repo
