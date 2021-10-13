@@ -1,0 +1,426 @@
+{
+	"Anime Club": {
+		"purpose": "To provide a safe space for students to enjoy anime, manga and similar forms of art.",
+		"meetingDate": "Tuesdays",
+		"infoVideo": "",
+		"meetingTime": "2:50pm-3:30pm",
+		"meetingRoom": 2130,
+		"sponsor": "Jared Goldman"
+	},
+	"Amnesty Intl Club": {
+		"purpose": "To spread awareness about current social issues and to find ways to help those in need.",
+		"meetingDate": "Every other Monday",
+		"infoVideo": "",
+		"meetingTime": "3pm-3:30pm",
+		"meetingRoom": "PB4A",
+		"sponsor": "Laura. Braun"
+	},
+	"Art Club": {
+		"purpose": "The purpose is to create art and add beauty and character to BHS through art work,",
+		"meetingDate": "Wednesdays",
+		"infoVideo": "",
+		"meetingTime": "2:50pm-3:20pm",
+		"meetingRoom": "PB1A",
+		"sponsor": "Cynthia.Alarcon@cfisd.net"
+	},
+	"Aware Bears Philosphical Club": {
+		"purpose": "Teaching and honing the skills required to  understand and apply different philososophical ideals in order to create a more well rounded and understanding student body.",
+		"meetingDate": "Every other Thursday",
+		"infoVideo": "",
+		"meetingTime": "2:50pm-3:20pm",
+		"meetingRoom": 1320,
+		"sponsor": "Kim Zabadal"
+	},
+	"Book Club": {
+		"purpose": "The   Bridgeland  High  School  Book  Club is concerned with meeting once a month to discuss a student-chosen book. BHS Book Club will also be involved in a yearly service project in order to serve our community and spread literacy.",
+		"meetingDate": "1st Monday of each month",
+		"infoVideo": "",
+		"meetingTime": "3:00 PM",
+		"meetingRoom": 2204,
+		"sponsor": "Ashley Mutschler"
+	},
+	"Bowling Club": {
+		"purpose": "To provide students the opportunity to develop skills related to the game of bowling and participate competitively in the sport of bowling.",
+		"meetingDate": "Schedule is set by off-campus center",
+		"infoVideo": "",
+		"meetingTime": "3:15pm-5pm",
+		"meetingRoom": "Copperfield Bowling",
+		"sponsor": "Maria Perez rm#2323"
+	},
+	"Chess Club": {
+		"purpose": "Chess Club is concerned with teaching and honing the skills required to play chess. Students will gain merits of thinking about the potential consequences for their actions before acting.",
+		"meetingDate": "Every other Wednesday",
+		"infoVideo": "",
+		"meetingTime": "3:00-3:00pm",
+		"meetingRoom": 3106,
+		"sponsor": "Justin Smith"
+	},
+	"Claw Crew": {
+		"purpose": "To promote school spirit at various events throughout the school year.",
+		"meetingDate": "Mondays",
+		"infoVideo": "",
+		"meetingTime": "3:00 PM",
+		"meetingRoom": 2322,
+		"sponsor": "Megan Puckett"
+	},
+	"Computer Club": {
+		"purpose": "To further programming skills as a team.",
+		"meetingDate": "Mondays",
+		"infoVideo": "",
+		"meetingTime": "3pm-3:50pm",
+		"meetingRoom": 2009,
+		"sponsor": "Rayvan.Watson@cfisd.net"
+	},
+	"Creative Writing Club": {
+		"purpose": "To give students a safe space in which to share and get constructive feedback on their writing.",
+		"meetingDate": "Wednesdays",
+		"infoVideo": "",
+		"meetingTime": "2:50 PM",
+		"meetingRoom": 2202,
+		"sponsor": "Cindy Newton"
+	},
+	"Divine by Design": {
+		"purpose": "Divine by Design focuses on empowering, inspiring and developing students to be servant leaders in their school and community.",
+		"meetingDate": "1st Wednesday of each month",
+		"infoVideo": "",
+		"meetingTime": "3:00 PM",
+		"meetingRoom": 1832,
+		"sponsor": "Melissa Robinson-Moore"
+	},
+	"Drama Club - Thespians Troupe#8503": {
+		"purpose": "To promote an extension of theatre curriculum and to engage students in theatrical activities and social opportunities beyond the classroom.",
+		"meetingDate": "1st and 3rd Tuesday/Thursday",
+		"infoVideo": "",
+		"meetingTime": "3:00 PM",
+		"meetingRoom": "Aud/Blackbox",
+		"sponsor": "Adam Delka"
+	},
+	"Ebony Excellence Society (EES)": {
+		"purpose": "The purpose of EES is to celebrate African-American culture.",
+		"meetingDate": "Every other Tuesday",
+		"infoVideo": "",
+		"meetingTime": "3pm-4pm",
+		"meetingRoom": "Library",
+		"sponsor": "April Young"
+	},
+	"Environmentalist Club": {
+		"purpose": "To educate students on the importance of environmental conservation and encourage students to take action in the fight against climate change.",
+		"meetingDate": "Thursdays",
+		"infoVideo": "",
+		"meetingTime": "3:00 PM",
+		"meetingRoom": 3116,
+		"sponsor": "Prescellia Valenzuela"
+	},
+	"Family Career & Community Leaders of America (FCCLA)": {
+		"purpose": "To promote personal growth and leadership development through Family and Consumer Sciences education.",
+		"meetingDate": "1st/3rd Wednesday",
+		"infoVideo": "FCCLA vid",
+		"meetingTime": "3:00 PM",
+		"meetingRoom": 1508,
+		"sponsor": "Amy Lai"
+	},
+	"FIDM Fashion Club": {
+		"purpose": "The purpose of FIDM Fashion club is to encourage students to embrace their creativity and produce amazing creations.",
+		"meetingDate": "Mondays",
+		"infoVideo": "",
+		"meetingTime": "3:00 PM",
+		"meetingRoom": 1832,
+		"sponsor": "Melissa Robinson-Moore"
+	},
+	"Fellowship of Christian Athletes (FCA)": {
+		"purpose": "To lead every coach and athelete into a growing spiritual relationship.",
+		"meetingDate": "TBD",
+		"infoVideo": "",
+		"meetingTime": "TBD",
+		"meetingRoom": "TBD",
+		"sponsor": "Jacqueline Hughes"
+	},
+	"FFA - Future Farmers of America": {
+		"purpose": "FFA is an integral part of agricultural classes and plays a major role in curriculum, Students are strongly encouraged to participate within the chapter as this organization strives to develop students potential for premier leadership, personal growth and career success.",
+		"meetingDate": "2nd Tuesday each month",
+		"infoVideo": "",
+		"meetingTime": "7:00 PM",
+		"meetingRoom": "Commons",
+		"sponsor": "Adrianna Baird, Shelbey Scardino"
+	},
+	"French Club": {
+		"purpose": "The purpose of French club is to promote the understanding of the French language, culture and people.",
+		"meetingDate": "1st & 3rd Wednesday",
+		"infoVideo": "",
+		"meetingTime": "3:00-4:00pm",
+		"meetingRoom": 2229,
+		"sponsor": "Lama Devries"
+	},
+	"Future Business Leaders of America": {
+		"purpose": "The purpose of FBLA is to inspire and prepare students to become community-minded business leaders in a global society through relevant career preparation and leadership experiences.",
+		"meetingDate": "Every other Thursday",
+		"infoVideo": "FBLA vid",
+		"meetingTime": "3:00 PM",
+		"meetingRoom": 2008,
+		"sponsor": "Tom Mosley"
+	},
+	"German Club": {
+		"purpose": "The purpose of the German Club is to promote the understanding of German language, people, and culture.  This organization is also to recognize scholastic achievement in the study of German language and to promote interest in the study of German language.",
+		"meetingDate": "Tuesday",
+		"infoVideo": "",
+		"meetingTime": "3:00-4:00pm",
+		"meetingRoom": 2230,
+		"sponsor": "Christina Howard"
+	},
+	"Girls Who Code Club": {
+		"purpose": "To inspire, educate and equip girls with the computing skills needed to pursue 21st century opportunities.",
+		"meetingDate": "Thursdays",
+		"infoVideo": "",
+		"meetingTime": "3-3:50pm",
+		"meetingRoom": 2009,
+		"sponsor": "Rayvan Watson, Gerald Staffel, Alejandro Garcia"
+	},
+	"HOSA": {
+		"purpose": "Students interested in pursuing a career in a health profession will learn more about various health careers, participate in community service projects and compete at regional, state and national HOSA competitions.",
+		"meetingDate": "2nd Tuesday of each month",
+		"infoVideo": "HOSA",
+		"meetingTime": "3:00 PM",
+		"meetingRoom": 1512,
+		"sponsor": "Denise Bishop"
+	},
+	"Inspire tech": {
+		"purpose": "To inspire technology in students in the area of technology.",
+		"meetingDate": "Every other Thursday",
+		"infoVideo": "",
+		"meetingTime": "3pm-3:30pm",
+		"meetingRoom": 2303,
+		"sponsor": "Kourtney Peterson"
+	},
+	"International Club": {
+		"purpose": "To enhance global awareness and cultural diversity of the world through active cultural, social and academic activities. \n The International Club also provides the student body with opportunities to become a global citizen through experiential learning.",
+		"meetingDate": "Wednesdays",
+		"infoVideo": "",
+		"meetingTime": "3:00 PM",
+		"meetingRoom": 3221,
+		"sponsor": "Paula Landry"
+	},
+	"Key Club": {
+		"purpose": "BHS Key club is concerned with volunteering in the surrounding area wtih the hopes of creating a greater sense of community and pride amongst its members as they give back to the community through selfless acts of kindness.",
+		"meetingDate": "Every other Wednesday",
+		"infoVideo": "Key Club vid",
+		"meetingTime": "3:00-4:00pm",
+		"meetingRoom": "TBD",
+		"sponsor": "Jeremy Albrecht"
+	},
+	"Korean Club": {
+		"purpose": "To improve inclusivity and acceptance of the Korean culture.",
+		"meetingDate": "Every Tuesday",
+		"infoVideo": "",
+		"meetingTime": "3pm-4pm",
+		"meetingRoom": 3304,
+		"sponsor": "Amy Simmons"
+	},
+	"Model UN": {
+		"purpose": "The purpose of Model UN is to inform students on world matters and delegation. It also encourages students to verbally express matters of importance.",
+		"meetingDate": "Every Tuesday",
+		"infoVideo": "Model UN vid",
+		"meetingTime": "3-4pm",
+		"meetingRoom": 1320,
+		"sponsor": "Kimberly Zabadal"
+	},
+	"Music Volunteers": {
+		"purpose": "To provide free virtual music lessons to elementary, middle and high school students in order to help them with musical studies and practice different techniques and skills.",
+		"meetingDate": "1st Tuesday e/month",
+		"infoVideo": "Music Volunteers vid",
+		"meetingTime": "3:00 PM",
+		"meetingRoom": 1616,
+		"sponsor": "Sarah Lopes"
+	},
+	"Mu Alpha Theta": {
+		"purpose": "To promote enjoyment and understanding of mathematics amongst high school students.",
+		"meetingDate": "3rd Tuesday of the month",
+		"infoVideo": "Mu Alpha Theta vid",
+		"meetingTime": "3:00 PM",
+		"meetingRoom": 3306,
+		"sponsor": "Angela Smith"
+	},
+	"Muslim Student Association (MSA)": {
+		"purpose": "MSA is concerned with providing an educational outlook on Islam and clearing sterotypical misconceptions about Islam at BHS.",
+		"meetingDate": "1st & 3rd Thursday",
+		"infoVideo": "",
+		"meetingTime": "3:00 PM",
+		"meetingRoom": 3303,
+		"sponsor": "Tiffani LaRose"
+	},
+	"National Honor Society (NHS)": {
+		"purpose": "NHS is a national organization that serves the community and school through outstanding scholarship, service, leadership, and character.",
+		"meetingDate": "TBD",
+		"infoVideo": "",
+		"meetingTime": "3:pm-4pm",
+		"meetingRoom": "TBD",
+		"sponsor": "Ashley Mutschler"
+	},
+	"Natonal Speech and Debate Association (NSDA)": {
+		"purpose": "Speech and debate is an academic activity open to all students. Students will develop skills in public speaking, interpretation and debate to compete at debate events,",
+		"meetingDate": "1st&3rd Tues./ each month",
+		"infoVideo": "",
+		"meetingTime": "3:00pm-3:45pm",
+		"meetingRoom": 2214,
+		"sponsor": "Sharyn Goemmer"
+	},
+	"No Place for Hate": {
+		"purpose": "To promote acceptance and diversity within BHS's school community.",
+		"meetingDate": "Wed every other week",
+		"infoVideo": "",
+		"meetingTime": "2:50pm-3:20pm",
+		"meetingRoom": 3205,
+		"sponsor": "Alexis Berkey and Candance Fraser"
+	},
+	"Photo Society": {
+		"purpose": "To bring students interested in photography together and provide a safe space for them to share their thoughts, ideas and work.",
+		"meetingDate": "Every other Wednesday",
+		"infoVideo": "",
+		"meetingTime": "2:55pm-3:20pm",
+		"meetingRoom": "",
+		"sponsor": "Juan Guevara"
+	},
+	"Ping Pong Club": {
+		"purpose": "To provide friendly competition and allow students to learn how to manage stress and maintain a healthy mental state.",
+		"meetingDate": "Thursdays",
+		"infoVideo": "",
+		"meetingTime": "3:00-4:00pm",
+		"meetingRoom": 4116,
+		"sponsor": "Leanna Davis"
+	},
+	"Poet Society": {
+		"purpose": "To celebrate poetry and allow students to express themselves through poetry.",
+		"meetingDate": "Mondays",
+		"infoVideo": "",
+		"meetingTime": "3:00 PM",
+		"meetingRoom": "PB4A",
+		"sponsor": "Laura. Braun"
+	},
+	"Positive Stress Management": {
+		"purpose": "To create awareness of the stress of schoolwork and use skills to manage stress in our daily lives.",
+		"meetingDate": "Every other Tuesday",
+		"infoVideo": "",
+		"meetingTime": "2:50pm-3:20pm",
+		"meetingRoom": 2322,
+		"sponsor": "Megan Puckett"
+	},
+	"Psychology Club": {
+		"purpose": "To provie students with an opportunity to learn more about the field of Psychology as a profession.",
+		"meetingDate": "1st and 3rd Monday",
+		"infoVideo": "",
+		"meetingTime": "3-4pm",
+		"meetingRoom": 4123,
+		"sponsor": "Laura Nguyen"
+	},
+	"Queer Straight Alliance  (QSA)": {
+		"purpose": "QSA is concerned with creating a safe space for BHS's LGBTQ youth and their allies to have community, further educate themselves and spread awareness of common issues queer youth face.",
+		"meetingDate": "Tuesdays (every other)",
+		"infoVideo": "",
+		"meetingTime": "3pm-4pm",
+		"meetingRoom": "Library",
+		"sponsor": "Deidre Joehl"
+	},
+	"Red Cross Club": {
+		"purpose": "Guided by the fundamental principles of the American Red Cross and its mission to prevent and alleviate human suffering in the face of emergencies by mobilizing the power of volunteers and the genorisity of donors, the club will learn, practice and exemplify humantarian values through mission-related service projects.",
+		"meetingDate": "Tuesdays",
+		"infoVideo": "Red Cross vid",
+		"meetingTime": "3:oopm",
+		"meetingRoom": 4117,
+		"sponsor": "Emily Castagno"
+	},
+	"Science Olympiad": {
+		"purpose": "The purpose of this organization is to create a community of STEM-Focused learners that will proudly represent Bridgeland High School at District, Regional, State, and National levels of Science Olympiad competitions.  In preparation for these competitions, students learn valuable life skills (research, problem solving, collaboration, etc.) that will help them be successful in achieving future goals.",
+		"meetingDate": "Tuesday, Wednesday, Thursday",
+		"infoVideo": "",
+		"meetingTime": "3:00pm-3:45pm",
+		"meetingRoom": "TBD",
+		"sponsor": "Carl.Boyd@cfisd.net Hannah.Mancil@cfisd.net Lagina.Nosavanh@cfisd.net"
+	},
+	"Society of Women Engineers Next (SWENext)": {
+		"purpose": "The SWENext is concerned with the advancement of students in STEM through participation in competitions, engineering projects, career exploration and outreach events.",
+		"meetingDate": "2nd/4th Wed. e/month",
+		"infoVideo": "BHS SWENext vid",
+		"meetingTime": "3:00 PM",
+		"meetingRoom": 2111,
+		"sponsor": "Kristina Behenna"
+	},
+	"Spanish Club": {
+		"purpose": "To serve the community and bring people together that share the love for the spanish speaking culture.",
+		"meetingDate": "1st Thursday of each month",
+		"infoVideo": "",
+		"meetingTime": "3:30-4pm",
+		"meetingRoom": 3222,
+		"sponsor": "Monica Lugo"
+	},
+	"Spanish National Honor Society - La Casa Azul Chapter": {
+		"purpose": "The purpose of SNH is to encourage and promote the use of languages in everday life while maintaining academic excellence while enrolled in language courses.",
+		"meetingDate": "Last Tuesday of the month",
+		"infoVideo": "",
+		"meetingTime": "2:50pm-3:20pm",
+		"meetingRoom": 3223,
+		"sponsor": "Yesenia Cavazos"
+	},
+	"Student Council": {
+		"purpose": "The purpose of student council is to govern and assist with decision making for BHS.",
+		"meetingDate": "1st/3rd Tuesday",
+		"infoVideo": "",
+		"meetingTime": "3-3:30pm",
+		"meetingRoom": 1240,
+		"sponsor": "Heide Modisette"
+	},
+	"Students Against Human Trafficking (SAHT)": {
+		"purpose": "To spread awareness and education regarding the global problem of human trafficking, prevention of human trafficking and community involvement with organizations whose missions line up with anti trafficking efforts.",
+		"meetingDate": "Wednesdays",
+		"infoVideo": "",
+		"meetingTime": "2:50pm-3:50pm",
+		"meetingRoom": "TBD",
+		"sponsor": "Kaitlyn Bourgeois"
+	},
+	"Students Protecting Animals of America": {
+		"purpose": "The purpose of this club is to serve and protect animals of America.",
+		"meetingDate": "Thursdays",
+		"infoVideo": "SPAA vid",
+		"meetingTime": "3:00 PM",
+		"meetingRoom": 3306,
+		"sponsor": "Angela Smith"
+	},
+	"Table Top Club": {
+		"purpose": "The purpose of this club shall be to provide a safe place after school for anyone who wishes to engage in strategic thought and competition in a friendly manner with and/or against other students.",
+		"meetingDate": "Thursdays",
+		"infoVideo": "",
+		"meetingTime": "3pm-4:15pm",
+		"meetingRoom": "3122 or 2320",
+		"sponsor": "Cameron Bell (rm2320) Carl Boyd (rm3122)"
+	},
+	"Texas Association of Future Educators (TAFE)": {
+		"purpose": "The purpose is to build leadership characteristics, collaboration skills and to learn about education while serving in the community.",
+		"meetingDate": "Wednesdays",
+		"infoVideo": "",
+		"meetingTime": "2:50 PM",
+		"meetingRoom": "PB1A",
+		"sponsor": "Stacy Morgan"
+	},
+	"Technology Student Association (TSA)": {
+		"purpose": "TSA enhances personal development, leadership, and career opportunities in science, technology, engineering and math  (STEM) whereby members apply and integrate these concepts through extra curricular activities, competitions and related programs.",
+		"meetingDate": "Wednesdays",
+		"infoVideo": "TSA vid",
+		"meetingTime": "3pm-3:30pm",
+		"meetingRoom": 1538,
+		"sponsor": "Josh Simmons"
+	},
+	"UNICEF Club": {
+		"purpose": "The purpose of UNICEF is to advocate for the protection of children's rights, to help meet their basic needs, and to expand their opportunities to reach their full potential.",
+		"meetingDate": "Every other Wednesday",
+		"infoVideo": "",
+		"meetingTime": "3pm-3:30pm",
+		"meetingRoom": 1319,
+		"sponsor": "Alex Jones"
+	},
+	"YLPA Sapphire Soul Sisters": {
+		"purpose": "To provide an opportunity to increase diversity and morale at BHS through the form of step.",
+		"meetingDate": "Tues-Thurs",
+		"infoVideo": "",
+		"meetingTime": "3pm-4:30pm",
+		"meetingRoom": "Atrium",
+		"sponsor": "Laura Nguyen"
+	}
+}
