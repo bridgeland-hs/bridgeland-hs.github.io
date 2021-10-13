@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.2/dist/darkly/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>Faculty List</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">&lt; Home</a>
+        </div>
+    </nav>
+
+    <h1 class="text-center w-100 py-5">Faculty List</h1>
+
+    <div id="loading" class="text-center w-100">
+        <div class="spinner-border" style="width: 5rem; height: 5rem;" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <div id="list">
+        <div class="form-floating mb-3" id="search">
+            <input type="text" class="form-control" id="name-filter" placeholder="Name" data-kwimpalastatus="alive"
+                data-kwimpalaid="1634093905166-5">
+            <label for="name-filter">Name Filter</label>
+        </div>
+
+        <ul class="list-group" id="faculty-list"></ul>
+    </div>
+
+
+    <script src="index.js"></script>
+</body>
+
+</html>
