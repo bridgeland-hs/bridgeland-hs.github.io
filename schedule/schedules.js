@@ -117,24 +117,24 @@ const schedules = {
 		],
 		lunch_b: [
 			createClass('4', '11:42', '12:12'),
-			createClass('lunch', '12:12', '12:42'),
-			createClass('5', '12:48', '13:44'),
+			createClass('lunch', '12:12', '12:51'),
+			createClass('5', '12:58', '13:54'),
 		],
 		lunch_c: [
-			createClass('4', '11:42', '12:12'),
-			createClass('5a', '12:18', '12:48'),
-			createClass('lunch', '12:48', '13:18'),
-			createClass('5b', '13:24', '13:44'),
+			createClass('4', '11:42', '12:21'),
+			createClass('5a', '12:27', '12:51'),
+			createClass('lunch', '12:51', '13:21'),
+			createClass('5b', '13:27', '13:54'),
 		],
 		lunch_d: [
-			createClass('4', '11:42', '12:12'),
-			createClass('5', '12:18', '13:14'),
-			createClass('lunch', '13:22', '13:44'),
+			createClass('4', '11:42', '12:21'),
+			createClass('5', '12:27', '13:24'),
+			createClass('lunch', '13:24', '13:54'),
 		],
 
 		after_lunch: [
-			createClass('6', '13:50', '14:17'),
-			createClass('7', '2:23', '14:50'),
+			createClass('6', '14:00', '14:22'),
+			createClass('7', '2:28', '14:50'),
 		]
     }
 };
