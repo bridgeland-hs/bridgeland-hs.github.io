@@ -1,5 +1,3 @@
-const jsonUrl =
-	'https://raw.githubusercontent.com/bridgeland-hs/bridgeland-hs.github.io/master/json/teachers.json';
 const teacherList = document.querySelector('#faculty-list');
 const nameFilter = document.querySelector('#name-filter');
 const list = document.querySelector('#list');
@@ -21,8 +19,7 @@ const addName = (teacher) => {
 };
 
 window.onload = async () => {
-	const response = await fetch(jsonUrl);
-	const teachers = await response.json();
+	const teachers = await json.load('teachers.json');
 	teachers.forEach(addName);
 	loadingIcon.style.display = 'none';
 
