@@ -4,6 +4,7 @@ img#schedule-img {
     filter: invert(1) grayscale();
     /* max-width: 40vw; */
     max-height: 50vh;
+    max-width: 90vw;
 }
 
 .settings {
