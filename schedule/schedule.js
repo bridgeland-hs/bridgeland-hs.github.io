@@ -254,12 +254,7 @@ function timeLoopAndUpdate(d = new Date()) {
 function updateClock() {
 	const date = new Date();
 
-	const hr =
-		searches.twelveHour || false
-			? date.getHours() % 12 === 0
-				? 12
-				: 0
-			: date.getHours();
+	const hr = date.getHours() > 12 && searches.twelveHour ? date.getHours() - 12 : date.getHours();
 
 	const hour = ('' + hr).padStart(2, 0);
 	const mins = ('' + date.getMinutes()).padStart(2, 0);
