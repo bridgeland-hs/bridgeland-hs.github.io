@@ -16,3 +16,7 @@ img#schedule-img {
 .output-text {
     color: #acacac;
 }
+
+small {
+    font-size: 1.2rem;
+}

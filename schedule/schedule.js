@@ -255,12 +255,14 @@ function updateClock() {
 	const date = new Date();
 
 	const hr = date.getHours() > 12 && searches.twelveHour ? date.getHours() - 12 : date.getHours();
-
+	
 	const hour = ('' + hr).padStart(2, 0);
 	const mins = ('' + date.getMinutes()).padStart(2, 0);
 	const secs = ('' + date.getSeconds()).padStart(2, 0);
+	const ampm = searches.twelveHour ? (date.getHours() < 12 ? ' <small>AM</small>' : ' <small>PM</small>') : '';
 
-	clock.innerHTML = `<br><br><h2 class="subtitle" id="clock">${hour}:${mins}:${secs}</h2>`;
+
+	clock.innerHTML = `<br><br><h2 class="subtitle" id="clock">${hour}:${mins}:${secs}${ampm}</h2>`;
 }
 
 timeLoopAndUpdate();
