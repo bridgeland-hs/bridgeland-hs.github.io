@@ -3,6 +3,7 @@ const toggle12hr = document.querySelector('#time');
 const clock = document.querySelector('#clock');
 const offsetEl = document.querySelector('#offset');
 const image = document.querySelector('#schedule-img');
+const progressbar = document.querySelector('#progressbar');
 const defaultImage = '../image/Default_Schedule.jpg';
 
 let offset = 0;
@@ -129,6 +130,7 @@ function timeLeft(d = new Date()) {
 			// console.log(startTimes);
 			let currentPdTimeLeft = (currentPd.end - d) / 1000;
 			let nextPdStartsIn = (nextPd.start - d) / 1000;
+			updateProgressBar(currentPd.start, currentPd.end, new Date());
 			// console.log(
 			// 	`Current Period: ${currentPd.name}, Time Left: ${currentPdTimeLeft}\nNext Period: ${nextPd.name}, Starts in: ${nextPdStartsIn}`
 			// );
@@ -263,6 +265,19 @@ function updateClock() {
 
 
 	clock.innerHTML = `<br><br><h2 class="subtitle" id="clock">${hour}:${mins}:${secs}${ampm}</h2>`;
+}
+
+/**
+ * 
+ * @param {Date} initial 
+ * @param {Date} final 
+ * @param {Date} current 
+ */
+function updateProgressBar(initial, final, current) {
+	const length = final.valueOf() - initial.valueOf();
+	const currentS = current.valueOf() - initial.valueOf();
+	progressbar.style = 'width: ' + (currentS / length) * 100 + '%';
+
 }
 
 timeLoopAndUpdate();
