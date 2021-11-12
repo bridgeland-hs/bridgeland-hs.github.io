@@ -8,6 +8,9 @@ const progressbararea = document.querySelector('#progressbar-area');
 const percent = document.querySelector('#header #percent');
 const defaultImage = '../image/Default_Schedule.jpg';
 const dayProgressBar = document.querySelector('#progress-day')
+const periodElts = [];
+
+const speed = 2; // Times to run per second
 
 let offset = 0;
 
@@ -132,7 +135,6 @@ function timeLeft(d = new Date()) {
 			}
 			let currentPdTimeLeft = (currentPd.end - d) / 1000;
 			let nextPdStartsIn = (nextPd.start - d) / 1000;
-			updateProgressBar(currentPd.start || prevPd.end, currentPd.end || nextPd.start, new Date(), currentPd);
 			return {
 				inClass: true,
 				currentPd,
@@ -144,6 +146,7 @@ function timeLeft(d = new Date()) {
 	}
 }
 
+let iteration = 0;
 function timeLoopAndUpdate(d = new Date()) {
 	if (currentDate.getDate() != new Date().getDate()) {
 		currentDate = new Date();
@@ -218,6 +221,11 @@ function timeLoopAndUpdate(d = new Date()) {
 			} : ${formatTime(info.currentPdTimeLeft)}`;
 	}
 	document.querySelector('#schedule').innerHTML = HTMLOut;
+
+	updateDayProgressBar();
+	updateProgressBar();
+
+	++iteration;
 	updateClock();
 }
 
@@ -235,31 +243,67 @@ function updateClock() {
 	clock.innerHTML = `${hour}:${mins}:${secs}${ampm}`;
 }
 
-function updateProgressBar(initial, final, current, currentPd) {
-	try {
-		const length = final.valueOf() - initial.valueOf();
-		const currentS = current.valueOf() - initial.valueOf();
-		const perc = (currentS / length) * 100
-		if (currentPd.name == 'none') {
-			progressbar.style = 'width: 0%';
-			progressbararea.title = ''
-			return;
-		};
-		progressbar.style = 'width: ' + perc + '%';
-		progressbararea.title = Math.round(perc) + '%';
-	} catch (e) {
-		progressbar.style = 'width: 0%';
-		progressbararea.title = ''
+function updateProgressBar() {
+	const dayStart = currentSchedule.before_lunch[0].start.valueOf() / 1000;
+	const current = (Date.now().valueOf() / 1000) - dayStart;
+	const periods = getDayPeriods()
+
+	for (const period of periods) {
+		const l = period.end - period.start;
+		const c = current - period.start;
+		const t = c / l;
+
+		// console.log(dayStart, current, c, period);
+		if (c > 0 && c < l) {
+			progressbar.style = 'width: ' + (t * 100) + '%';
+			progressbararea.title = Math.round(t * 100) + '%';
+		}
+
 	}
-	updateDayProgressBar()
 }
 
 function updateDayProgressBar(time = new Date()) {
 	const dayStart = currentSchedule.before_lunch[0].start.valueOf();
+	const current = (time.valueOf() / 1000) - (dayStart / 1000);
+	const periods = getDayPeriods()
+
+	for (const si in periods) {
+		const i = +si;
+		const period = periods[i];
+
+		if (period.start < current && period.end < current) {
+			periodElts[i].progress.classList.remove('hide');
+			periodElts[i].blank.classList.add('hide');
+			periodElts[i].progress.style = `width: ${period.width * 100}%`;
+			periodElts[i].blank.style = 'width: 0%';
+		} else if (period.start < current && period.end > current) {
+
+			const l = period.end - period.start;
+			const c = current - period.start;
+			const t = c / l;
+			const w = period.width * t;
+			periodElts[i].progress.classList.add('progress-rounded', 'progress-bar-striped', 'progress-bar-animated');
+
+			periodElts[i].progress.classList.remove('hide');
+			periodElts[i].blank.classList.remove('hide');
+			periodElts[i].progress.style = `width: ${w * 100}%`;
+			periodElts[i].blank.style = `width: ${(period.width - w) * 100}%`
+
+		} else {
+			periodElts[i].progress.classList.add('hide');
+			periodElts[i].blank.classList.remove('hide');
+			periodElts[i].progress.style = 'width: 0%';
+			periodElts[i].blank.style = `width: ${period.width * 100}%`;
+		}
+	}
+}
+
+function getDayPeriods() {
+
+	const dayStart = currentSchedule.before_lunch[0].start.valueOf();
 	const dayEnd = currentSchedule.after_lunch[1].end.valueOf();
-	current = (time.valueOf() / 1000) - (dayStart / 1000);
 	const dayLength = (dayEnd - dayStart) / 1000;
-	periods = [];
+	const periods = [];
 	let prev = null;
 	[
 		'before_lunch',
@@ -289,34 +333,43 @@ function updateDayProgressBar(time = new Date()) {
 		periods.push(per);
 		prev = per;
 	}));
-
-	dayProgressBar.innerHTML = '';
-	for (const period of periods) {
-		const passing = period.name === 'Passing';
-		if (period.start < current && period.end < current) { // Completed periods
-
-			dayProgressBar.innerHTML += `<div
-			 class="progress-bar bg-${passing ? 'info' : 'primary'} pd"
-			 title="${period.name}"
-			 style="width: ${period.width * 100}%;">
-			 ${passing ? '' : titleCase(period.name)}
-			 </div>`
-		} else if (period.start < current && period.end > current) { // Partial Bar
-			const l = period.end - period.start;
-			const c = current - period.start;
-			const t = c / l;
-			dayProgressBar.innerHTML += `<div
-			 class="progress-bar bg-${period.name === 'Passing' ? 'info' : 'primary'} progress-bar-striped progress-rounded pd"
-			 title="${period.name}"
-			 style="width: ${period.width * 100 * t}%;">
-			 ${passing ? '' : titleCase(period.name)}
-			 </div>`
-		}
-
-	}
-
-	// periods.forEach()
+	return periods;
 }
 
+function addDayProgressBar() {
+	const dayStart = currentSchedule.before_lunch[0].start.valueOf();
+	const dayEnd = currentSchedule.after_lunch[1].end.valueOf();
+	const current = (time.valueOf() / 1000) - (dayStart / 1000);
+	const dayLength = (dayEnd - dayStart) / 1000;
+
+	const periods = getDayPeriods();
+	for (const period of periods) {
+		const passing = period.name === 'Passing';
+		const eltProgress = document.createElement('div');
+		eltProgress.title = titleCase(period.name);
+		eltProgress.id = period.name + (passing ? period.start : '') + '-progress'; // Used to call it back later
+		eltProgress.style = 0;
+		eltProgress.classList.add('progress-bar', 'pd', `bg-${passing ? 'info' : 'primary'}`);
+		eltProgress.innerText = passing ? '' : titleCase(period.name);
+		eltProgress.style = `width: 0%`
+		dayProgressBar.appendChild(eltProgress)
+
+		const eltBlank = document.createElement('div');
+		eltBlank.title = titleCase(period.name);
+		eltBlank.id = period.name + (passing ? period.start : ''); // Used to call it back later
+		eltBlank.style = 0;
+		eltBlank.classList.add('progress-bar', 'pd', 'bg-none', 'progress-bar-filler');
+		eltBlank.style = `width: ${period.width * 100}%`
+		dayProgressBar.appendChild(eltBlank)
+
+		periodElts.push({
+			progress: eltProgress,
+			blank: eltBlank
+		});
+
+	}
+}
+
+addDayProgressBar();
 timeLoopAndUpdate();
-setInterval(timeLoopAndUpdate, 500);
+setInterval(timeLoopAndUpdate, 1000 / speed);

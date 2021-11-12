@@ -36,10 +36,14 @@ small {
 	height: 0;
 }
 
-.progress-bar.pd {
+.progress {
     border-right: 1px solid var(--bs-info);
-    border-top: 1px solid var(--bs-info);
-    border-bottom: 1px solid var(--bs-info);
+	border-top: 1px solid #fff3 !important;
+	border-bottom: 1px solid #fff3 !important;
+}
+
+#progress-day {
+	border-bottom: none !important;
 }
 
 .progress-rounded {
@@ -49,6 +53,15 @@ small {
 
 .progress {
 	border-radius: 0;
+	border: none;
+}
+
+.progress-bar-filler {
+	border-right: 1px solid #fff3 !important;
+}
+
+.bg-none {
+	background: none;
 }
 
 /* Mobile media query */
