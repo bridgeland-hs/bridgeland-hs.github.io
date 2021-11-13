@@ -272,10 +272,12 @@ function updateDayProgressBar(time = new Date()) {
 		const period = periods[i];
 
 		if (period.start < current && period.end < current) {
-			periodElts[i].progress.classList.remove('hide');
+			periodElts[i].progress.classList.remove('progress-rounded', 'progress-bar-striped', 'progress-bar-animated', 'hide', 'progress-bar-completed');
+			periodElts[i].progress.classList.add('progress-bar-complete');
 			periodElts[i].blank.classList.add('hide');
 			periodElts[i].progress.style = `width: ${period.width * 100}%`;
 			periodElts[i].blank.style = 'width: 0%';
+
 		} else if (period.start < current && period.end > current) {
 
 			const l = period.end - period.start;
@@ -290,6 +292,8 @@ function updateDayProgressBar(time = new Date()) {
 			periodElts[i].blank.style = `width: ${(period.width - w) * 100}%`
 
 		} else {
+			periodElts[i].progress.classList.remove('progress-rounded', 'progress-bar-striped', 'progress-bar-animated');
+
 			periodElts[i].progress.classList.add('hide');
 			periodElts[i].blank.classList.remove('hide');
 			periodElts[i].progress.style = 'width: 0%';

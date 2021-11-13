@@ -51,6 +51,10 @@ small {
 	border-bottom-right-radius: .5em;
 }
 
+.progress-bar-complete {
+	border-right: 1px solid var(--bs-info);
+}
+
 .progress {
 	border-radius: 0;
 	border: none;
