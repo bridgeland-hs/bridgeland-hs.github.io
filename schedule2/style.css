@@ -1,16 +1,29 @@
 #settings {
 	position: absolute;
-	top: 50vh;
+	/* top: 50vh;
 	left: 50vw;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%); */
+	/* top: 50vh;
+	left: 50vw; */
+  margin: 0 auto;
+  left: 0;
+  right: 0;
 	border: 2px solid var(--bs-primary);
 	padding: 3em;
 	border-radius: 1em;
     background: #0006;
 }
 
-.container {
-    filter: blur(10px);
+#tray {
+    background: #000a;
+    border-top: 1px solid var(--bs-primary);
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+}
+
+#tray button {
+    margin: 1em .5em;
 }
 
 .hide {

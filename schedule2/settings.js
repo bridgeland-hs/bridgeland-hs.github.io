@@ -2,8 +2,8 @@
 
 const settingsElt = document.querySelector('div#settings');
 const settingsElts = {
-    twelveHour: settingsElt.querySelector('input#twelve-hour'),
-}
+  twelveHour: settingsElt.querySelector('input#twelve-hour'),
+};
 
 const getSetting = (setting) => {
   const value = localStorage.getItem(`settings.${setting}`);
