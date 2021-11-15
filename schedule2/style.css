@@ -1,0 +1,18 @@
+#settings {
+	position: absolute;
+	top: 50vh;
+	left: 50vw;
+	transform: translate(-50%, -50%);
+	border: 2px solid var(--bs-primary);
+	padding: 3em;
+	border-radius: 1em;
+    background: #0006;
+}
+
+.container {
+    filter: blur(10px);
+}
+
+.hide {
+	display: none;
+}
