@@ -10,70 +10,86 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">
-                « Home
-            </a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            « Home
+        </a>
+    </div>
+</nav>
+
+<div class="container">
+    <h1 class="text-center w-100 py-5">Current Schedule</h1>
+
+    <div class="row align-items-start">
+        <div class="col text-center" id="schedule">
+            left
         </div>
-    </nav>
-
-    <div class="container">
-        <h1 class="text-center w-100 py-5">Current Schedule</h1>
-
-        <div class="row align-items-start">
-            <div class="col text-center">
-                left
-            </div>
-            <div class="col text-center">
-                right
-            </div>
+        <div class="col text-center">
+            right
         </div>
     </div>
+</div>
 
-    <div id="settings" class="text-center w-50 hide">
-        <h1>Settings</h1>
-        <form>
-            <fieldset>
-                <div class="form-check form-switch">
-                    <label class="form-check-label" for="twelve-hour">Twelve Hour Time</label>
-                    <input class="form-check-input" type="checkbox" id="twelve-hour">
-                </div>
-                <div class="form-group">
-                    <label for="lunch-option" class="form-label mt-4">Lunch</label>
-                    <select class="form-select" id="lunch-option">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="" class="form-label">
+<div id="settings" class="text-center w-50 hide panel">
+    <h1>Settings</h1>
+    <form>
+        <fieldset>
+            <legend>General Settings</legend>
+            <div class="form-check form-switch">
+                <label class="form-check-label" for="twelve-hour">Twelve Hour Time</label>
+                <input class="form-check-input" type="checkbox" id="twelve-hour">
+            </div>
+            <div class="form-check form-switch">
+                <label class="form-check-label" for="show-seconds">Show Seconds</label>
+                <input class="form-check-input" type="checkbox" id="show-seconds">
+            </div>
+            <div class="form-group">
+                <label for="lunch-option" class="form-label mt-4">Lunch</label>
+                <select class="form-select" id="lunch-option">
+                    <option value="a">A</option>
+                    <option value="b">B</option>
+                    <option value="c">C</option>
+                    <option value="d">D</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="" class="form-label">
 
-                    </label>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="" class="form-label">
+                </label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="" class="form-label">
 
-                    </label>
-                    <input type="text" class="form-control">
-                </div>
-            </fieldset>
-        </form>
-    </div>
+                </label>
+                <input type="text" class="form-control">
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Clock Settings</legend>
+        </fieldset>
+    </form>
+</div>
 
-    <div id="tray" class="text-end"> <!-- Perhaps do "text-center" later, depending on how it looks -->
-        <button class="btn btn-outline-light" id="clock-toggle" title="Toggle Clock Display">🕒&nbsp; Clock</button>
-        <button class="btn btn-outline-light" id="settings-toggle" title="Toggle Settings Panel">⚙️&nbsp; Settings</button>
-    </div>
+<div id="clock" class="text-center w-50 hide panel">
+    <h1>99:99</h1>
+</div>
 
-    <script src="../json/json.js"></script>
-    <script src="./settings.js"></script>
-    <script src="./schedule.js"></script>
-    <script src="./index.js"></script>
+<div id="tray" class="text-end">
+    <!-- Perhaps do "text-center" later, depending on how it looks -->
+    <button class="btn btn-outline-light" id="clock-toggle" title="Toggle Clock Display">🕒&nbsp; Clock</button>
+    <button class="btn btn-outline-light" id="settings-toggle" title="Toggle Settings Panel">⚙️&nbsp;
+        Settings
+    </button>
+</div>
+
+<script src="../json/json.js"></script>
+<script src="./utils.js"></script>
+<script src="./panels.js"></script>
+<script src="./settings.js"></script>
+<script src="./schedule.js"></script>
+<script src="./index.js"></script>
 
 </body>
 

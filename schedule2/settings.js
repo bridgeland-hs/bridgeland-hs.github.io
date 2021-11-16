@@ -2,7 +2,14 @@
 
 const settingsElt = document.querySelector('div#settings');
 const settingsElts = {
-  twelveHour: settingsElt.querySelector('input#twelve-hour'),
+
+  general: {
+    twelveHour: settingsElt.querySelector('input#twelve-hour'),
+    lunch: settingsElt.querySelector('select#lunch-option'),
+    showSeconds: settingsElt.querySelector('input#show-seconds'),
+  },
+  clock: {
+  },
 };
 
 const getSetting = (setting) => {
@@ -21,6 +28,7 @@ const setSetting = (setting, value) => {
 const settings = {
   twelveHour: getSetting('twelveHour') ?? false, // Boolean
   lunch: getSetting('lunch') ?? 'a', // String: 'a' | 'b' | 'c' | 'd'
+  showSeconds: getSetting('showSeconds') ?? true, // Boolean
 };
 
 const toggleSettings = () => {
@@ -39,4 +47,16 @@ const updateSetting = (setting, value) => {
 // eslint-disable-next-line no-unused-vars
 const loadSettings = () => {
   document.querySelector('button#settings-toggle').addEventListener('click', toggleSettings);
+
+  settingsElts.general.twelveHour.addEventListener('change', () => {
+    updateSetting('twelveHour', settingsElts.general.twelveHour.checked);
+  });
+
+  settingsElts.general.lunch.addEventListener('change', () => {
+    updateSetting('lunch', settingsElts.general.lunch.value);
+  });
+
+  settingsElts.general.showSeconds.addEventListener('change', () => {
+    updateSetting('showSeconds', settingsElts.general.showSeconds.checked);
+  });
 };
