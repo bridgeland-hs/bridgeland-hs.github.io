@@ -1,3 +1,5 @@
+const settingsElt = document.querySelector('#settings');
+const trayElt = document.querySelector('#tray');
 const lunchSel = document.querySelector('#lunch');
 const toggle12hr = document.querySelector('#time');
 const clock = document.querySelector('#clock');
@@ -10,13 +12,21 @@ const periodElts = [];
 
 const speed = 2; // Times to run per second
 
+trayElt.querySelector('#settings-toggle').addEventListener('click', () => {
+  settingsElt.classList.toggle('hide');
+  trayElt.querySelector('#settings-toggle').classList.toggle('btn-dark');
+});
+
+trayElt.querySelector('#clock-toggle').addEventListener('click', () => {
+  clock.classList.toggle('hide');
+  trayElt.querySelector('#clock-toggle').classList.toggle('btn-dark');
+});
+
 const searches = {};
 for (const i of window.location.search.substr(1)
   .split('&')) {
   const [k, v] = i.split('=');
-  if (k && v) {
-    searches[k] = v;
-  }
+  if (k && v) searches[k] = v;
 }
 toggle12hr.checked = searches.twelveHour === 'true';
 
@@ -63,7 +73,7 @@ function timeLeft(d = new Date()) {
     return {
       inClass: false,
       weekend: true,
-      day: d.getDay === 0 ? 'Sunday' : 'Saturday',
+      day: d.getDay() === 0 ? 'Sunday' : 'Saturday',
     };
   }
   if ((currentSchedule.before_lunch[0].start - d) / 1000 > 0) {
@@ -109,7 +119,7 @@ function timeLeft(d = new Date()) {
   startTimes.sort((a, b) => a.start - b.start);
 
   if (startTimes[0] === currentPd && startTimes.length > 1) {
-    [_, nextPd] = startTimes[1];
+    [_, nextPd] = startTimes;
   } else {
     [nextPd] = startTimes;
   }
@@ -310,7 +320,6 @@ function timeLoopAndUpdate(d = new Date()) {
   updateDayProgressBar();
   updateProgressBar();
 
-  ++iteration;
   updateClock();
 }
 

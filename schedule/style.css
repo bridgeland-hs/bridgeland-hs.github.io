@@ -1,88 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
 * {
-	cursor: default;
+    cursor: default;
 }
 
 .hide {
-	display: none;
+    display: none;
 }
 
 img#schedule-img {
-	filter: invert(1) grayscale();
-	max-height: 50vh;
-	max-width: 90vw;
-	border-radius: 1em;
+    filter: invert(1) grayscale(1);
+    max-height: 50vh;
+    max-width: 90vw;
+    border-radius: 1em;
 }
 
 .settings {
-	position: fixed;
-	bottom: 0em;
-	left: 0em;
-	background: #0008;
-	padding: 2em;
-	border-top-right-radius: 1em;
-	border-top: 3px solid var(--bs-primary);
-	border-right: 3px solid var(--bs-primary);
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid var(--bs-primary);
+    border-radius: 1em;
+    min-width: 25%;
+    background: #000a;
+    padding: 2em;
 }
 
 .output-text {
-	color: #acacac;
+    color: #acacac;
 }
 
 small {
-	font-size: 1.2rem;
+    font-size: 1.2rem;
 }
 
 .scroll-height {
-	height: 0;
+    height: 0;
 }
 
 .progress {
     border-right: 1px solid var(--bs-info);
-	border-top: 1px solid #fff3 !important;
-	border-bottom: 1px solid #fff3 !important;
+    border-top: 1px solid #fff3 !important;
+    border-bottom: 1px solid #fff3 !important;
 }
 
 #progress-day {
-	border-bottom: none !important;
+    border-bottom: none !important;
 }
 
 .progress-rounded {
-	border-top-right-radius: .5em;
-	border-bottom-right-radius: .5em;
+    border-top-right-radius: .5em;
+    border-bottom-right-radius: .5em;
 }
 
 .progress-bar-complete {
-	border-right: 1px solid var(--bs-info);
+    border-right: 1px solid var(--bs-info);
 }
 
 .progress {
-	border-radius: 0;
-	border: none;
+    border-radius: 0;
+    border: none;
 }
 
 .progress-bar-filler {
-	border-right: 1px solid #fff3 !important;
+    border-right: 1px solid #fff3 !important;
 }
 
 .bg-none {
-	background: none;
+    background: none;
+}
+
+#tray {
+    background: #000a;
+    border-top: 1px solid var(--bs-primary);
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+}
+
+#tray button {
+    margin: 1em 0.5em;
+}
+
+#clock {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: bolder;
+    color: #0f0;
+    text-shadow: 0 0 20px #0f0a, 0 0 30px #0f08;
 }
 
 /* Mobile media query */
 @media screen and (max-width: 600px) {
-	.settings {
-		position: fixed;
-		bottom: 0em;
-		left: 0em;
-		background: #0008;
-		padding: 2em;
-		border-top-right-radius: 0em;
-		border-right: none;
-		border-top: 3px solid var(--bs-primary);
-		width: 100vw;
-	}
+    #settings {
+        width: 100%
+    }
 
-	.scroll-height {
-		height: 45vh;
-	}
+    .scroll-height {
+        height: 10vh;
+    }
 }
