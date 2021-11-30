@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="./icon.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.2/dist/darkly/bootstrap.min.css">
     <link rel="stylesheet" href="./style.css">
-    <title>Schedule Thingy</title>
+    <title>Schedule Tool</title>
 </head>
 
 <body>
@@ -26,7 +26,7 @@
 
 <div class="text-center w-100 py-3 my-5" id="header">
     <h1>Current Schedule</h1>
-    <h2 id="clock" class="text-center w-100 subtitle mb-2"></h2>
+    <h2 id="clock" class="clock text-center w-100 subtitle mb-2 glow"></h2>
 </div>
 
 <div class="container">
@@ -43,10 +43,17 @@
 
 </div>
 
-
-<div id="tray" class="text-end">
-    <button class="btn btn-outline-light btn-dark" id="clock-toggle" title="Toggle Clock Display">🕒&nbsp; Clock</button>
-    <button class="btn btn-outline-light" id="settings-toggle" title="Toggle Settings Panel">⚙️&nbsp;Settings</button>
+<div id="tray" class="navbar p-0">
+    <div class="text-start ps-3 h3">
+        Winter break in <span class="glow-strong clock" id="next-break">0</span><span id="next-break-days"></span>!
+    </div>
+    <div class="text-end">
+        <a href="../image/2022-Calendar.pdf" class="btn btn-outline-light" target="_blank">🗓️ Calendar</a>
+        <button class="btn btn-outline-light btn-dark" id="clock-toggle" title="Toggle Clock Display">🕒&nbsp; Clock
+        </button>
+        <button class="btn btn-outline-light" id="settings-toggle" title="Toggle Settings Panel">⚙️&nbsp;Settings
+        </button>
+    </div>
 </div>
 
 <div class="scroll-height"></div> <!-- Add height when in mobile view, so that one can scroll -->

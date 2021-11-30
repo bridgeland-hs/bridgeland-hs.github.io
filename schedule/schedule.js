@@ -8,19 +8,43 @@ const progressbar = document.querySelector('#progressbar');
 const progressbararea = document.querySelector('#progressbar-area');
 const defaultImage = '../image/Default_Schedule.jpg';
 const dayProgressBar = document.querySelector('#progress-day');
+const nextBreakElt = document.querySelector('#next-break');
+const nextBreakUnitsElt = document.querySelector('#next-break-days');
 const periodElts = [];
+
+const nextBreak = new Date(2021, 11, 17, 14, 50, 0, 0);
+// const nextBreak = new Date(2021, 10, 29, 14, 50, 0, 0);
+
+const now = new Date();
+now.setHours(0, 0, 0, 0);
+const breakDays = weekDays(now, nextBreak);
+const updateNextBreak = breakDays === 1;
+nextBreakElt.innerText = `${breakDays}`;
+nextBreakUnitsElt.innerText = ` day${breakDays === 1 ? '' : 's'}`;
+
+const updateBreak = () => {
+  const n = new Date();
+  const s = (nextBreak - n) / 1000;
+  nextBreakElt.innerText = formatTime(s);
+};
 
 const speed = 2; // Times to run per second
 
-trayElt.querySelector('#settings-toggle').addEventListener('click', () => {
-  settingsElt.classList.toggle('hide');
-  trayElt.querySelector('#settings-toggle').classList.toggle('btn-dark');
-});
+trayElt.querySelector('#settings-toggle')
+  .addEventListener('click', () => {
+    settingsElt.classList.toggle('hide');
+    trayElt.querySelector('#settings-toggle')
+      .classList
+      .toggle('btn-dark');
+  });
 
-trayElt.querySelector('#clock-toggle').addEventListener('click', () => {
-  clock.classList.toggle('hide');
-  trayElt.querySelector('#clock-toggle').classList.toggle('btn-dark');
-});
+trayElt.querySelector('#clock-toggle')
+  .addEventListener('click', () => {
+    clock.classList.toggle('hide');
+    trayElt.querySelector('#clock-toggle')
+      .classList
+      .toggle('btn-dark');
+  });
 
 const searches = {};
 for (const i of window.location.search.substr(1)
@@ -253,6 +277,11 @@ function timeLoopAndUpdate(d = new Date()) {
     currentDate = new Date();
   }
 
+  if (updateNextBreak) {
+    updateBreak();
+    nextBreakUnitsElt.innerText = '';
+  }
+
   lunchSel.value = searches.lunch;
   prevSearches = searches;
   searches.lunch = lunchSel.value;
@@ -299,17 +328,17 @@ function timeLoopAndUpdate(d = new Date()) {
         <h2 class="subtitle">Next Period:</h2>
         <h3 class="output-text">${info.nextPd.name}</h3>
         <h2 class="subtitle">Starts At:</h2>
-        <h3 class="output-text" id="time-left">${time(info.nextPd.start, true)} (In ${formatTime(info.nextPdStartsIn)})</h3>`;
+        <h3 class="output-text" id="time-left"><span class="time">${time(info.nextPd.start, true)}</span> (In <span class="time">${formatTime(info.nextPdStartsIn)}</span>)</h3>`;
   } else {
     HTMLOut = `<h2 class="subtitle">Period:</h2>
     <h3 class="output-text" id="current-period">${info.currentPd.name}</h3>
     <h2 class="subtitle">Ends At:</h2>
-    <h3 class="output-text" id="time-left">${time(info.currentPd.end, true)} (${formatTime(info.currentPdTimeLeft)} left)</h3>`;
+    <h3 class="output-text" id="time-left"><span class="time">${time(info.currentPd.end, true)}</span> (<span class="time">${formatTime(info.currentPdTimeLeft)}</span> left)</h3>`;
     if (info.nextPd.inClass !== false) {
       HTMLOut += `<h2 class="subtitle">Next Period:</h2>
     <h3 class="output-text">${info.nextPd.name}</h3>
     <h2 class="subtitle">Starts At:</h2>
-    <h3 class="output-text" id="time-left">${time(info.nextPd.start, true)} (In ${formatTime(info.nextPdStartsIn)})</h3>
+    <h3 class="output-text" id="time-left"><span class="time">${time(info.nextPd.start, true)}</span> (In <span class="time">${formatTime(info.nextPdStartsIn)}</span>)</h3>
     `;
     }
     document.querySelector('title').innerText = `Period ${info.currentPd.name

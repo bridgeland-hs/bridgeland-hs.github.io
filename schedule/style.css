@@ -83,11 +83,24 @@ small {
     margin: 1em 0.5em;
 }
 
-#clock {
+.time {
+    font-family: 'Roboto Mono', monospace;
+}
+
+.clock {
     font-family: 'Roboto Mono', monospace;
     font-weight: bolder;
+}
+
+.glow {
     color: #0f0;
     text-shadow: 0 0 20px #0f0a, 0 0 30px #0f08;
+
+}
+
+.glow-strong {
+    color: #0f0;
+    text-shadow: 0 0 20px #0f0, 0 0 30px #0f08, 0 0 40px #0f08, 0 0 50px #0f08;
 }
 
 /* Mobile media query */
