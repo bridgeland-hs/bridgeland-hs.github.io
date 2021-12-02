@@ -6,15 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="favicon" type="image/png" href="./icon.png">
     <link rel="icon" type="image/png" href="./icon.png">
+    <link rel="apple-touch-icon" href="./icon.png">
+    <link rel="shortcut icon" href="./icon.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.2/dist/darkly/bootstrap.min.css">
     <link rel="stylesheet" href="./style.css">
     <title>Schedule Tool</title>
 </head>
 
-<body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<body><nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/">« Home</a>
+
+        <a class="navbar-brand" href="../">BHS Utilities</a>
+
+        <div class="navbar-collapse">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="../">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="./">Schedule
+                        <span class="visually-hidden">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../grade-calculator/">Grade Calculator</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../faculty/">Faculty</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../clubs/">Clubs</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
 
@@ -24,9 +48,9 @@
          style="width: 0;"></div>
 </div>
 
-<div class="text-center w-100 py-3 my-5" id="header">
-    <h1>Current Schedule</h1>
-    <h2 id="clock" class="clock text-center w-100 subtitle mb-2 glow"></h2>
+<div class="text-center w-100 py-3 my-2" id="header">
+<!--    <h1>Current Schedule</h1>-->
+    <h2 id="clock" class="clock text-center w-100 subtitle glow"></h2>
 </div>
 
 <div class="container">

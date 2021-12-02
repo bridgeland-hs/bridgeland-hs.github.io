@@ -105,6 +105,7 @@ const schedules = {
   },
   PSAT: {
     image: '../image/PSAT_Schedule.jpg',
+    hide: true,
     before_lunch: [
       createClass('1', '7:20', '8:23'),
       createClass('2', '8:29', '10:00'),
@@ -139,6 +140,8 @@ const schedules = {
     ],
   },
   final_dec_14: {
+    date: new Date(2021, 11, 14),
+    hide: true,
     before_lunch: [
       createClass('1st Final', '7:20', '9:20'),
       createClass('3', '9:26', '10:18'),
@@ -171,6 +174,8 @@ const schedules = {
     ],
   },
   final_dec_15: {
+    date: new Date(2021, 11, 15),
+    hide: true,
     before_lunch: [
       createClass('2nd Final', '7:20', '9:20'),
       createClass('3', '9:26', '10:18'),
@@ -203,6 +208,8 @@ const schedules = {
     ],
   },
   final_dec_16: {
+    date: new Date(2021, 11, 16),
+    hide: true,
     before_lunch: [
       createClass('3nd Final', '7:20', '9:20'),
       createClass('3', '9:26', '10:18'),
@@ -235,6 +242,8 @@ const schedules = {
     ],
   },
   final_dec_17: {
+    date: new Date(2021, 11, 17),
+    hide: true,
     before_lunch: [
       createClass('4th Final', '7:20', '9:20'),
       createClass('3', '9:26', '10:18'),

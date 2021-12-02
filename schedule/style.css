@@ -8,6 +8,11 @@
     display: none;
 }
 
+.hide-text {
+    color: transparent !important;
+    text-shadow: none !important;
+}
+
 img#schedule-img {
     filter: invert(1) grayscale(1);
     max-height: 50vh;
@@ -101,6 +106,10 @@ small {
 .glow-strong {
     color: #0f0;
     text-shadow: 0 0 20px #0f0, 0 0 30px #0f08, 0 0 40px #0f08, 0 0 50px #0f08;
+}
+
+.subtitle {
+    margin-top: .75em;
 }
 
 /* Mobile media query */

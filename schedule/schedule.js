@@ -40,7 +40,7 @@ trayElt.querySelector('#settings-toggle')
 
 trayElt.querySelector('#clock-toggle')
   .addEventListener('click', () => {
-    clock.classList.toggle('hide');
+    clock.classList.toggle('hide-text');
     trayElt.querySelector('#clock-toggle')
       .classList
       .toggle('btn-dark');
@@ -79,12 +79,20 @@ if (searches.lunch === undefined) {
 }
 lunchSel.value = searches.lunch;
 
-// Using 'Let' so that it can be changed with `currentSchedule = schedule.SOMETHING` in the console
 let currentSchedule = currentDate.getDay() === 3 ? schedules.advisory : schedules.regular;
+for (const schedule of Object.values(schedules)) {
+  if (schedule.date
+    && schedule.date.getDate() === currentDate.getDate()
+    && schedule.date.getMonth() === currentDate.getMonth()) {
+    currentSchedule = schedule;
+    break;
+  }
+}
 
 const scheduleSelect = document.querySelector('#schedule-select');
 Object.keys(schedules)
   .forEach((s) => {
+    if (schedules[s].hide) return;
     const opt = document.createElement('option');
     opt.value = s;
     opt.innerText = titleCase(s);
@@ -236,7 +244,7 @@ function updateProgressBar() {
 
     // console.log(dayStart, current, c, period);
     if (c > 0 && c < l) {
-      progressbar.style = `width: ${t * 100}%`;
+      progressbar.style.width = `${t * 100}%`;
       progressbararea.title = `${Math.round(t * 100)}%`;
     }
   });
@@ -349,8 +357,8 @@ function timeLoopAndUpdate(d = new Date()) {
     <h3 class="output-text" id="time-left"><span class="time">${time(info.nextPd.start, true)}</span> (In <span class="time">${formatTime(info.nextPdStartsIn)}</span>)</h3>
     `;
     }
-    document.querySelector('title').innerText = `Period ${info.currentPd.name
-    } : ${formatTime(info.currentPdTimeLeft)}`;
+    document.querySelector('title').innerText = `${Number.isNaN(+info.currentPd.name) ? '' : 'Period'} ${info.currentPd.name
+    } | ${formatTime(info.currentPdTimeLeft)} left`;
   }
   document.querySelector('#schedule').innerHTML = HTMLOut;
 
