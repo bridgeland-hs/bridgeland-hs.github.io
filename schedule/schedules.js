@@ -101,7 +101,7 @@ const schedules = {
     after_lunch: [
       createClass('6', '12:14', '12:59'),
       createClass('7', '13:05', '14:50'),
-    ]
+    ],
   },
   PSAT: {
     image: '../image/PSAT_Schedule.jpg',
@@ -136,6 +136,135 @@ const schedules = {
     after_lunch: [
       createClass('6', '14:00', '14:22'),
       createClass('7', '2:28', '14:50'),
-    ]
-  }
+    ],
+  },
+  final_dec_14: {
+    before_lunch: [
+      createClass('1st Final', '7:20', '9:20'),
+      createClass('3', '9:26', '10:18'),
+    ],
+
+    lunch_a: [
+      createClass('lunch', '10:18', '10:48'),
+      createClass('4', '10:54', '11:24'),
+      createClass('5', '11:30', '12:36'),
+    ],
+    lunch_b: [
+      createClass('4', '10:24', '10:54'),
+      createClass('lunch', '10:54', '11:24'),
+      createClass('5', '11:30', '12:36'),
+    ],
+    lunch_c: [
+      createClass('4', '10:24', '10:54'),
+      createClass('5a', '11:00', '11:30'),
+      createClass('lunch', '11:30', '12:00'),
+      createClass('5b', '12:06', '12:36'),
+    ],
+    lunch_d: [
+      createClass('4', '10:24', '10:54'),
+      createClass('5', '11:00', '12:06'),
+      createClass('lunch', '12:06', '12:36'),
+    ],
+
+    after_lunch: [
+      createClass('6th Final', '12:42', '14:50'),
+    ],
+  },
+  final_dec_15: {
+    before_lunch: [
+      createClass('2nd Final', '7:20', '9:20'),
+      createClass('3', '9:26', '10:18'),
+    ],
+
+    lunch_a: [
+      createClass('lunch', '10:18', '10:48'),
+      createClass('4', '10:54', '11:24'),
+      createClass('5', '11:30', '12:36'),
+    ],
+    lunch_b: [
+      createClass('4', '10:24', '10:54'),
+      createClass('lunch', '10:54', '11:24'),
+      createClass('5', '11:30', '12:36'),
+    ],
+    lunch_c: [
+      createClass('4', '10:24', '10:54'),
+      createClass('5a', '11:00', '11:30'),
+      createClass('lunch', '11:30', '12:00'),
+      createClass('5b', '12:06', '12:36'),
+    ],
+    lunch_d: [
+      createClass('4', '10:24', '10:54'),
+      createClass('5', '11:00', '12:06'),
+      createClass('lunch', '12:06', '12:36'),
+    ],
+
+    after_lunch: [
+      createClass('7th Final', '12:42', '14:50'),
+    ],
+  },
+  final_dec_16: {
+    before_lunch: [
+      createClass('3nd Final', '7:20', '9:20'),
+      createClass('3', '9:26', '10:18'),
+    ],
+
+    lunch_a: [
+      createClass('lunch', '10:18', '10:48'),
+      createClass('4', '10:54', '11:24'),
+      createClass('5', '11:30', '12:36'),
+    ],
+    lunch_b: [
+      createClass('4', '10:24', '10:54'),
+      createClass('lunch', '10:54', '11:24'),
+      createClass('5', '11:30', '12:36'),
+    ],
+    lunch_c: [
+      createClass('4', '10:24', '10:54'),
+      createClass('5a', '11:00', '11:30'),
+      createClass('lunch', '11:30', '12:00'),
+      createClass('5b', '12:06', '12:36'),
+    ],
+    lunch_d: [
+      createClass('4', '10:24', '10:54'),
+      createClass('5', '11:00', '12:06'),
+      createClass('lunch', '12:06', '12:36'),
+    ],
+
+    after_lunch: [
+      createClass('5th Final', '12:42', '14:50'),
+    ],
+  },
+  final_dec_17: {
+    before_lunch: [
+      createClass('4th Final', '7:20', '9:20'),
+      createClass('3', '9:26', '10:18'),
+    ],
+
+    lunch_a: [
+      createClass('lunch', '10:18', '10:48'),
+      createClass('4', '10:54', '11:24'),
+      createClass('5', '11:30', '12:36'),
+    ],
+    lunch_b: [
+      createClass('4', '10:24', '10:54'),
+      createClass('lunch', '10:54', '11:24'),
+      createClass('5', '11:30', '12:36'),
+    ],
+    lunch_c: [
+      createClass('4', '10:24', '10:54'),
+      createClass('5a', '11:00', '11:30'),
+      createClass('lunch', '11:30', '12:00'),
+      createClass('5b', '12:06', '12:36'),
+    ],
+    lunch_d: [
+      createClass('4', '10:24', '10:54'),
+      createClass('5', '11:00', '12:06'),
+      createClass('lunch', '12:06', '12:36'),
+    ],
+
+    after_lunch: [
+      createClass('6', '12:42', '13:43'),
+      createClass('7', '13:49', '14:50'),
+    ],
+  },
 };

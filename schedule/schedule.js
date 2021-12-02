@@ -47,14 +47,17 @@ trayElt.querySelector('#clock-toggle')
   });
 
 const searches = {};
-for (const i of window.location.search.substr(1)
-  .split('&')) {
-  const [k, v] = i.split('=');
-  if (k && v) searches[k] = v;
-}
-toggle12hr.checked = searches.twelveHour === 'true';
+window.location.search
+  .substr(1)
+  .split('&')
+  .forEach((s) => {
+    const [k, v] = s.split('=');
+    if (k && v) searches[k] = v;
+  });
 
+toggle12hr.checked = searches.twelveHour === 'true';
 searches.twelveHour = searches.twelveHour ?? false;
+
 for (const k in searches) {
   if (searches[k] === 'true' || searches[k] === 'false') {
     searches[k] = searches[k] === 'true';
@@ -62,11 +65,12 @@ for (const k in searches) {
 }
 searches.update = () => {
   let s = '?';
-  for (const k in searches) {
-    if (k !== 'update') {
-      s += `${k}=${searches[k]}&`;
-    }
-  }
+  Object.entries(searches)
+    .forEach(([k, v]) => {
+      if (k !== 'update') {
+        s += `${k}=${v}&`;
+      }
+    });
   window.location.search = s;
 };
 
@@ -87,7 +91,7 @@ Object.keys(schedules)
     scheduleSelect.appendChild(opt);
   });
 scheduleSelect.selected = currentDate.getDay() === 3 ? 'advisory' : 'regular';
-scheduleSelect.addEventListener('change', (e) => {
+scheduleSelect.addEventListener('change', () => {
   currentSchedule = schedules[scheduleSelect.value];
   image.src = currentSchedule.image || defaultImage;
 });
@@ -109,7 +113,7 @@ function timeLeft(d = new Date()) {
       tl,
     };
   }
-  if ((currentSchedule.after_lunch[1].end - d) / 1000 < 0) {
+  if ((currentSchedule.after_lunch[currentSchedule.after_lunch.length - 1].end - d) / 1000 < 0) {
     return {
       inClass: false,
       before_school: false,
@@ -123,23 +127,21 @@ function timeLeft(d = new Date()) {
     inClass: false,
     unset: true,
   };
-  let nextPd = {
-    name: 'none',
-  };
-  for (const arr of [
+  let nextPd;
+  [
     'before_lunch',
     `lunch_${searches.lunch}`,
     'after_lunch',
-  ]) {
-    for (const c of currentSchedule[arr]) {
+  ].forEach((arr) => {
+    currentSchedule[arr].forEach((c) => {
       const minsStart = (c.start - d) / 1000;
       const minsEnd = (c.end - d) / 1000;
       if (currentPd.unset && minsStart <= 0 && minsEnd >= 0) {
         currentPd = c;
       }
       if (minsStart > 0 || minsEnd > 0) startTimes.push(c);
-    }
-  }
+    });
+  });
   startTimes.sort((a, b) => a.start - b.start);
 
   if (startTimes[0] === currentPd && startTimes.length > 1) {
@@ -168,7 +170,7 @@ function timeLeft(d = new Date()) {
 
 function getDayPeriods() {
   const dayStart = currentSchedule.before_lunch[0].start.valueOf();
-  const dayEnd = currentSchedule.after_lunch[1].end.valueOf();
+  const dayEnd = currentSchedule.after_lunch[currentSchedule.after_lunch.length - 1].end.valueOf();
   const dayLength = (dayEnd - dayStart) / 1000;
   const periods = [];
   let prev = null;
@@ -208,10 +210,15 @@ function updateClock() {
 
   const hr = date.getHours() > 12 && searches.twelveHour ? date.getHours() - 12 : date.getHours();
 
-  const hour = (`${hr}`).padStart(2, 0);
-  const mins = (`${date.getMinutes()}`).padStart(2, 0);
-  const secs = (`${date.getSeconds()}`).padStart(2, 0);
-  const ampm = searches.twelveHour ? (date.getHours() < 12 ? ' <small>AM</small>' : ' <small>PM</small>') : '';
+  const hour = (`${hr}`).padStart(2, '0');
+  const mins = (`${date.getMinutes()}`).padStart(2, '0');
+  const secs = (`${date.getSeconds()}`).padStart(2, '0');
+  let ampm;
+  if (searches.twelveHour) {
+    ampm = date.getHours() < 12 ? ' <small>AM</small>' : ' <small>PM</small>';
+  } else {
+    ampm = '';
+  }
 
   clock.innerHTML = `${hour}:${mins}:${secs}${ampm}`;
 }
@@ -222,7 +229,7 @@ function updateProgressBar() {
     .valueOf() / 1000) - dayStart;
   const periods = getDayPeriods();
 
-  for (const period of periods) {
+  periods.forEach((period) => {
     const l = period.end - period.start;
     const c = current - period.start;
     const t = c / l;
@@ -232,7 +239,7 @@ function updateProgressBar() {
       progressbar.style = `width: ${t * 100}%`;
       progressbararea.title = `${Math.round(t * 100)}%`;
     }
-  }
+  });
 }
 
 function updateDayProgressBar(time = new Date()) {
@@ -240,16 +247,16 @@ function updateDayProgressBar(time = new Date()) {
   const current = (time.valueOf() / 1000) - (dayStart / 1000);
   const periods = getDayPeriods();
 
-  for (const si in periods) {
-    const i = +si;
-    const period = periods[i];
+  periods.forEach((period, i) => {
+    // const i = +si;
+    // const period = periods[i];
 
     if (period.start < current && period.end < current) {
       periodElts[i].progress.classList.remove('progress-rounded', 'progress-bar-striped', 'progress-bar-animated', 'hide', 'progress-bar-completed');
       periodElts[i].progress.classList.add('progress-bar-complete');
       periodElts[i].blank.classList.add('hide');
-      periodElts[i].progress.style = `width: ${period.width * 100}%`;
-      periodElts[i].blank.style = 'width: 0%';
+      periodElts[i].progress.style.width = `${period.width * 100}%`;
+      periodElts[i].blank.style.width = '0%';
     } else if (period.start < current && period.end > current) {
       const l = period.end - period.start;
       const c = current - period.start;
@@ -259,17 +266,17 @@ function updateDayProgressBar(time = new Date()) {
 
       periodElts[i].progress.classList.remove('hide');
       periodElts[i].blank.classList.remove('hide');
-      periodElts[i].progress.style = `width: ${w * 100}%`;
-      periodElts[i].blank.style = `width: ${(period.width - w) * 100}%`;
+      periodElts[i].progress.style.width = `${w * 100}%`;
+      periodElts[i].blank.style.width = `${(period.width - w) * 100}%`;
     } else {
       periodElts[i].progress.classList.remove('progress-rounded', 'progress-bar-striped', 'progress-bar-animated');
 
       periodElts[i].progress.classList.add('hide');
       periodElts[i].blank.classList.remove('hide');
-      periodElts[i].progress.style = 'width: 0%';
-      periodElts[i].blank.style = `width: ${period.width * 100}%`;
+      periodElts[i].progress.style.width = '0%';
+      periodElts[i].blank.style.width = `${period.width * 100}%`;
     }
-  }
+  });
 }
 
 function timeLoopAndUpdate(d = new Date()) {
@@ -283,7 +290,7 @@ function timeLoopAndUpdate(d = new Date()) {
   }
 
   lunchSel.value = searches.lunch;
-  prevSearches = searches;
+  const prevSearches = searches;
   searches.lunch = lunchSel.value;
 
   if (searches.lunch) {
@@ -296,8 +303,9 @@ function timeLoopAndUpdate(d = new Date()) {
     searches.update();
   }
 
-  info = timeLeft(d);
+  const info = timeLeft(d);
 
+  let HTMLOut;
   if (!info.inClass) {
     if (info.weekend) {
       HTMLOut = '<h2 class="subtitle">It\'s the weekend, there\'s no school.</h2>';
@@ -354,7 +362,7 @@ function timeLoopAndUpdate(d = new Date()) {
 
 function addDayProgressBar() {
   const periods = getDayPeriods();
-  for (const period of periods) {
+  periods.forEach((period) => {
     const passing = period.name === 'Passing';
     const eltProgress = document.createElement('div');
     eltProgress.title = titleCase(period.name);
@@ -370,14 +378,14 @@ function addDayProgressBar() {
     eltBlank.id = period.name + (passing ? period.start : ''); // Used to call it back later
     eltBlank.style = 0;
     eltBlank.classList.add('progress-bar', 'pd', 'bg-none', 'progress-bar-filler');
-    eltBlank.style = `width: ${period.width * 100}%`;
+    eltBlank.style.width = `${period.width * 100}%`;
     dayProgressBar.appendChild(eltBlank);
 
     periodElts.push({
       progress: eltProgress,
       blank: eltBlank,
     });
-  }
+  });
 }
 
 addDayProgressBar();
