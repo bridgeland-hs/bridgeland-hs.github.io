@@ -10,10 +10,13 @@
     <link rel="shortcut icon" href="./icon.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.2/dist/darkly/bootstrap.min.css">
     <link rel="stylesheet" href="./style.css">
-    <title>Schedule Tool</title>
+    <title>BHS Schedule</title>
 </head>
 
-<body><nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<body>
+<div id="snowverlay"></div>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
 
         <a class="navbar-brand" href="../">BHS Utils</a>
@@ -54,7 +57,7 @@
 </div>
 
 <div class="text-center w-100 py-3 my-2" id="header">
-<!--    <h1>Current Schedule</h1>-->
+    <!--    <h1>Current Schedule</h1>-->
     <h2 id="clock" class="clock text-center w-100 subtitle glow"></h2>
 </div>
 
@@ -77,6 +80,9 @@
         Winter break in <span class="glow-strong clock" id="next-break">0</span><span id="next-break-days"></span>!
     </div>
     <div class="text-end">
+        <button class="btn btn-outline-light btn-dark" id="snow-toggle" title="Toggle Snowverlay"
+                onclick="document.querySelector('#snowverlay').classList.toggle('hide'); this.classList.toggle('btn-dark')">❄ Snowverlay
+        </button>
         <a href="../image/2022-Calendar.pdf" class="btn btn-outline-light" target="_blank">🗓️ Calendar</a>
         <button class="btn btn-outline-light btn-dark" id="clock-toggle" title="Toggle Clock Display">🕒&nbsp; Clock
         </button>

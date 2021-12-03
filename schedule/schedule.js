@@ -376,7 +376,7 @@ function addDayProgressBar() {
     eltProgress.title = titleCase(period.name);
     eltProgress.id = `${period.name + (passing ? period.start : '')}-progress`; // Used to call it back later
     eltProgress.style = 0;
-    eltProgress.classList.add('progress-bar', 'pd', `bg-${passing ? 'info' : 'primary'}`);
+    eltProgress.classList.add('progress-bar', 'pd', `bg-${passing ? 'danger' : 'success'}`);
     eltProgress.innerText = passing ? '' : titleCase(period.name);
     eltProgress.style = 'width: 0%';
     dayProgressBar.appendChild(eltProgress);

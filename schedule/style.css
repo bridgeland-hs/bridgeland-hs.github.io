@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
+:root {
+}
+
 * {
     cursor: default;
 }
@@ -127,6 +130,28 @@ img {
 a:hover .gh-logo {
     filter: brightness(4);
 }
+
+/* <TODO>: remove after christmas */
+.bg-success {
+    color: black;
+}
+
+#progressbar {
+    background-color: rgba(var(--bs-success-rgb),var(--bs-bg-opacity)) !important
+}
+
+#snowverlay {
+    background-image: url("../image/snowverlay.gif");
+    opacity: .10;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    /*z-index: 100000;*/
+}
+/* </TODO> */
 
 /* Mobile media query */
 @media screen and (max-width: 600px) {
