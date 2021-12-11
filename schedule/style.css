@@ -87,7 +87,7 @@ small {
     width: 100vw;
 }
 
-#tray button, #tray a {
+#tray button, #tray a, #tray select {
     margin: 1em 0.5em;
 }
 

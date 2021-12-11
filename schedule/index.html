@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="./icon.png">
     <link rel="apple-touch-icon" href="./icon.png">
     <link rel="shortcut icon" href="./icon.png">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.2/dist/darkly/bootstrap.min.css">
+    <link id="bootswatch" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.2/dist/darkly/bootstrap.min.css">
     <link rel="stylesheet" href="./style.css">
     <title>BHS Schedule</title>
 </head>
@@ -88,6 +88,33 @@
         </button>
         <button class="btn btn-outline-light" id="settings-toggle" title="Toggle Settings Panel">⚙️&nbsp;Settings
         </button>
+        <select name="style" id="style" class="btn btn-outline-light" onload="updateStyle();">
+            <option value="zephyr">Zephyr</option>
+            <option value="yeti">Yeti</option>
+            <option value="vapor">Vapor</option>
+            <option value="united">United</option>
+            <option value="superhero">Superhero</option>
+            <option value="spacelab">Spacelab</option>
+            <option value="solar">Solar</option>
+            <option value="slate">Slate</option>
+            <option value="sketchy">Sketchy</option>
+            <option value="simplex">Simplex</option>
+            <option value="sandstone">Sandstone</option>
+            <option value="quartz">Quartz</option>
+            <option value="pulse">Pulse</option>
+            <option value="morph">Morph</option>
+            <option value="minty">Minty</option>
+            <option value="materia">Materia</option>
+            <option value="lux">Lux</option>
+            <option value="lumen">Lumen</option>
+            <option value="litera">Litera</option>
+            <option value="journal">Journal</option>
+            <option value="flatly">Flatly</option>
+            <option value="darkly" selected>Darkly</option>
+            <option value="cyborg">Cyborg</option>
+            <option value="cosmo">Cosmo</option>
+            <option value="cerulean">Cerulean</option>
+        </select>
     </div>
 </div>
 

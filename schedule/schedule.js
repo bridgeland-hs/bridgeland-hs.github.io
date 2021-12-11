@@ -396,6 +396,12 @@ function addDayProgressBar() {
   });
 }
 
+const updateStyle = () => {
+  document.querySelector('#bootswatch').href = `https://cdn.jsdelivr.net/npm/bootswatch@5.1.2/dist/${document.querySelector('select#style').value}/bootstrap.min.css`;
+};
+
+document.querySelector('select#style').addEventListener('input', updateStyle);
+
 addDayProgressBar();
 timeLoopAndUpdate();
 setInterval(timeLoopAndUpdate, 1000 / speed);
