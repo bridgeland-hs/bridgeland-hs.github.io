@@ -12,7 +12,7 @@ const nextBreakElt = document.querySelector('#next-break');
 const nextBreakUnitsElt = document.querySelector('#next-break-days');
 const periodElts = [];
 
-const nextBreak = new Date(2021, 11, 17, 14, 50, 0, 0);
+const nextBreak = new Date(2022, 2, 11, 14, 50, 0, 0);
 // const nextBreak = new Date(2021, 10, 29, 14, 50, 0, 0);
 
 const now = new Date();
@@ -374,16 +374,14 @@ function addDayProgressBar() {
     const passing = period.name === 'Passing';
     const eltProgress = document.createElement('div');
     eltProgress.title = titleCase(period.name);
-    eltProgress.id = `${period.name + (passing ? period.start : '')}-progress`; // Used to call it back later
     eltProgress.style = 0;
-    eltProgress.classList.add('progress-bar', 'pd', `bg-${passing ? 'danger' : 'success'}`);
+    eltProgress.classList.add('progress-bar', 'pd', `bg-${passing ? 'info' : 'primary'}`);
     eltProgress.innerText = passing ? '' : titleCase(period.name);
-    eltProgress.style = 'width: 0%';
+    eltProgress.style.width = '0%';
     dayProgressBar.appendChild(eltProgress);
 
     const eltBlank = document.createElement('div');
     eltBlank.title = titleCase(period.name);
-    eltBlank.id = period.name + (passing ? period.start : ''); // Used to call it back later
     eltBlank.style = 0;
     eltBlank.classList.add('progress-bar', 'pd', 'bg-none', 'progress-bar-filler');
     eltBlank.style.width = `${period.width * 100}%`;
