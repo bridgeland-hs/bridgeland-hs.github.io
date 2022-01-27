@@ -8,7 +8,6 @@ window.onload = async () => {
   loadPanels();
 };
 
-
 const clock = document.querySelector('#clock');
 
 const updateClock = () => {

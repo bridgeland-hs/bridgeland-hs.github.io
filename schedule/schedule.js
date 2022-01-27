@@ -256,33 +256,31 @@ function updateDayProgressBar(time = new Date()) {
   const periods = getDayPeriods();
 
   periods.forEach((period, i) => {
-    // const i = +si;
-    // const period = periods[i];
-
+    const periodElt = periodElts[i];
     if (period.start < current && period.end < current) {
-      periodElts[i].progress.classList.remove('progress-rounded', 'progress-bar-striped', 'progress-bar-animated', 'hide', 'progress-bar-completed');
-      periodElts[i].progress.classList.add('progress-bar-complete');
-      periodElts[i].blank.classList.add('hide');
-      periodElts[i].progress.style.width = `${period.width * 100}%`;
-      periodElts[i].blank.style.width = '0%';
+      periodElt.progress.classList.remove('progress-rounded', 'progress-bar-striped', 'progress-bar-animated', 'hide', 'progress-bar-completed');
+      periodElt.progress.classList.add('progress-bar-complete');
+      periodElt.blank.classList.add('hide');
+      periodElt.progress.style.width = `${period.width * 100}%`;
+      periodElt.blank.style.width = '0%';
     } else if (period.start < current && period.end > current) {
       const l = period.end - period.start;
       const c = current - period.start;
       const t = c / l;
       const w = period.width * t;
-      periodElts[i].progress.classList.add('progress-rounded', 'progress-bar-striped', 'progress-bar-animated');
+      periodElt.progress.classList.add('progress-rounded', 'progress-bar-striped', 'progress-bar-animated');
 
-      periodElts[i].progress.classList.remove('hide');
-      periodElts[i].blank.classList.remove('hide');
-      periodElts[i].progress.style.width = `${w * 100}%`;
-      periodElts[i].blank.style.width = `${(period.width - w) * 100}%`;
+      periodElt.progress.classList.remove('hide');
+      periodElt.blank.classList.remove('hide');
+      periodElt.progress.style.width = `${w * 100}%`;
+      periodElt.blank.style.width = `${(period.width - w) * 100}%`;
     } else {
-      periodElts[i].progress.classList.remove('progress-rounded', 'progress-bar-striped', 'progress-bar-animated');
+      periodElt.progress.classList.remove('progress-rounded', 'progress-bar-striped', 'progress-bar-animated');
 
-      periodElts[i].progress.classList.add('hide');
-      periodElts[i].blank.classList.remove('hide');
-      periodElts[i].progress.style.width = '0%';
-      periodElts[i].blank.style.width = `${period.width * 100}%`;
+      periodElt.progress.classList.add('hide');
+      periodElt.blank.classList.remove('hide');
+      periodElt.progress.style.width = '0%';
+      periodElt.blank.style.width = `${period.width * 100}%`;
     }
   });
 }
@@ -326,12 +324,14 @@ function timeLoopAndUpdate(d = new Date()) {
         'title',
       ).innerText = 'School Over For Today!';
     } else if (info.before_school) {
-      HTMLOut = `<h2 class="subtitle">School hasn't started yet.<h2>
-    <h2 class="subtitle">Next Period:</h2>
-    <h3 class="output-text">1</h3>
-    <h2 class="subtitle">Starts At:</h2>
-    <h3 class="output-text" id="time-left">7:20 (In ${formatTime(info.tl)})</h3>
-    `;
+      HTMLOut = `
+          <h2 class="subtitle">School hasn't started yet.
+              <h2>
+                  <h2 class="subtitle">Next Period:</h2>
+                  <h3 class="output-text">1</h3>
+                  <h2 class="subtitle">Starts At:</h2>
+                  <h3 class="output-text" id="time-left">7:20 (In ${formatTime(info.tl)})</h3>
+      `;
       document.querySelector('title').innerText = 'School Hasn\'t Started Yet!';
     }
   } else if (info.currentPd.name === 'Passing') {
@@ -344,18 +344,24 @@ function timeLoopAndUpdate(d = new Date()) {
         <h2 class="subtitle">Next Period:</h2>
         <h3 class="output-text">${info.nextPd.name}</h3>
         <h2 class="subtitle">Starts At:</h2>
-        <h3 class="output-text" id="time-left"><span class="time">${time(info.nextPd.start, true)}</span> (In <span class="time">${formatTime(info.nextPdStartsIn)}</span>)</h3>`;
+        <h3 class="output-text" id="time-left"><span
+                class="time">${time(info.nextPd.start, true)}</span> (In <span
+                class="time">${formatTime(info.nextPdStartsIn)}</span>)</h3>`;
   } else {
     HTMLOut = `<h2 class="subtitle">Period:</h2>
     <h3 class="output-text" id="current-period">${info.currentPd.name}</h3>
     <h2 class="subtitle">Ends At:</h2>
-    <h3 class="output-text" id="time-left"><span class="time">${time(info.currentPd.end, true)}</span> (<span class="time">${formatTime(info.currentPdTimeLeft)}</span> left)</h3>`;
+    <h3 class="output-text" id="time-left"><span
+            class="time">${time(info.currentPd.end, true)}</span> (<span
+            class="time">${formatTime(info.currentPdTimeLeft)}</span> left)</h3>`;
     if (info.nextPd.inClass !== false) {
       HTMLOut += `<h2 class="subtitle">Next Period:</h2>
-    <h3 class="output-text">${info.nextPd.name}</h3>
-    <h2 class="subtitle">Starts At:</h2>
-    <h3 class="output-text" id="time-left"><span class="time">${time(info.nextPd.start, true)}</span> (In <span class="time">${formatTime(info.nextPdStartsIn)}</span>)</h3>
-    `;
+      <h3 class="output-text">${info.nextPd.name}</h3>
+      <h2 class="subtitle">Starts At:</h2>
+      <h3 class="output-text" id="time-left"><span
+              class="time">${time(info.nextPd.start, true)}</span> (In <span
+              class="time">${formatTime(info.nextPdStartsIn)}</span>)</h3>
+      `;
     }
     document.querySelector('title').innerText = `${Number.isNaN(+info.currentPd.name) ? '' : 'Period'} ${info.currentPd.name
     } | ${formatTime(info.currentPdTimeLeft)} left`;
@@ -373,6 +379,7 @@ function addDayProgressBar() {
   periods.forEach((period) => {
     const passing = period.name === 'Passing';
     const eltProgress = document.createElement('div');
+
     eltProgress.title = titleCase(period.name);
     eltProgress.style = 0;
     eltProgress.classList.add('progress-bar', 'pd', `bg-${passing ? 'info' : 'primary'}`);
@@ -394,12 +401,7 @@ function addDayProgressBar() {
   });
 }
 
-const updateStyle = () => {
-  document.querySelector('#bootswatch').href = `https://cdn.jsdelivr.net/npm/bootswatch@5.1.2/dist/${document.querySelector('select#style').value}/bootstrap.min.css`;
-};
-
-document.querySelector('select#style').addEventListener('input', updateStyle);
-
+alerts.load(); // Load alert modals
 addDayProgressBar();
 timeLoopAndUpdate();
 setInterval(timeLoopAndUpdate, 1000 / speed);

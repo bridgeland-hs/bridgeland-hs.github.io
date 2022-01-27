@@ -4,6 +4,39 @@
     cursor: default;
 }
 
+#alerts {
+    width: 25vw;
+    position: fixed;
+    top: 4em;
+    right: 2em;
+    z-index: 100000;
+}
+
+#alerts * {
+    transition: all 250ms linear;
+}
+
+#alerts .alert .btn-close {
+    display: none;
+}
+
+#alerts .alert:hover .btn-close {
+    display: inline;
+}
+
+#alerts .alert:hover:not(.yeet) {
+    transform: scale(.98);
+    cursor: pointer;
+}
+
+#alerts .yeet {
+    transform: scale(0);
+}
+
+body {
+    overflow-y: hidden;
+}
+
 .hide {
     display: none;
 }
@@ -76,6 +109,10 @@ small {
     background: none;
 }
 
+.container {
+    min-height: 80vh;
+}
+
 #tray {
     background: #000a;
     border-top: 1px solid var(--bs-primary);
@@ -136,5 +173,19 @@ a:hover .gh-logo {
 
     .scroll-height {
         height: 10vh;
+    }
+
+    body {
+        overflow-y: scroll;
+    }
+
+    .navbar-collapse, .gh-logo {
+        display: none;
+    }
+
+    #alerts {
+        width: 90vw;
+        left: 50vw;
+        transform: translateX(-50%);
     }
 }

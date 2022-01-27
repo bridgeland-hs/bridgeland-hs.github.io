@@ -1,0 +1,12 @@
+{
+  "other_tools": {
+    "title": "Did you know?",
+    "description": "There's some other tools on this site, you can find them in navigation bar at the top.",
+    "type": "info"
+  },
+  "thank_you": {
+    "title": "Thank you!",
+    "description": "Thank you everyone who uses this website!<br><u>You can click this message to close it.</u>",
+    "type": "success"
+  }
+}
