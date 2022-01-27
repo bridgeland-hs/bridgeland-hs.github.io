@@ -1,5 +1,6 @@
-// eslint-disable-next-line no-unused-vars
-const schedules = {
+import { createClass } from './helper.js';
+
+export default {
   regular: {
     before_lunch: [
       createClass('1', '7:20', '8:12'),

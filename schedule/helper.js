@@ -1,13 +1,14 @@
-const currentDate = new Date();
+import searches from './searchParams.js';
 
-// eslint-disable-next-line no-unused-vars
-function titleCase(str) {
+export const currentDate = new Date();
+
+export function titleCase(str) {
   return str.split('_')
     .map((w) => w[0].toUpperCase() + w.substr(1))
     .join(' ');
 }
 
-function formatTime(seconds, twelveHour = false) {
+export function formatTime(seconds, twelveHour = false) {
   let hour = seconds / 3600;
   let min = Math.floor(seconds / 60) % 60;
   let sec = Math.floor(seconds % 60);
@@ -25,7 +26,7 @@ function formatTime(seconds, twelveHour = false) {
   return hour === 0 ? `${min}:${sec}` : `${hour}:${min.padStart(2, 0)}:${sec}`;
 }
 
-function time(t) {
+export function time(t) {
   if (typeof t === 'string') {
     return new Date(
       currentDate.getFullYear(),
@@ -43,8 +44,7 @@ function time(t) {
   );
 }
 
-// eslint-disable-next-line no-unused-vars
-function createClass(name, start, end) {
+export function createClass(name, start, end) {
   return {
     name,
     start: time(start),
@@ -57,8 +57,7 @@ function createClass(name, start, end) {
  * @param endDate {Date}
  * @returns {number}
  */
-// eslint-disable-next-line no-unused-vars
-function weekDays(startDate, endDate) {
+export function weekDays(startDate, endDate) {
   let count = 0;
   const curDate = new Date(startDate.getTime());
   while (curDate <= endDate) {

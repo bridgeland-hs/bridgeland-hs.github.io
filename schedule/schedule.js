@@ -1,15 +1,17 @@
-const settingsElt = document.querySelector('#settings');
-const trayElt = document.querySelector('#tray');
-const lunchSel = document.querySelector('#lunch');
-const toggle12hr = document.querySelector('#time');
-const clock = document.querySelector('#clock');
-const image = document.querySelector('#schedule-img');
-const progressbar = document.querySelector('#progressbar');
-const progressbararea = document.querySelector('#progressbar-area');
+import {
+  titleCase,
+  formatTime,
+  time,
+  weekDays,
+  currentDate,
+} from './helper.js';
+
+import * as alerts from './alerts.js';
+import schedules from './schedules.js';
+import searches from './searchParams.js';
+import elements from './elements.js';
+
 const defaultImage = '../image/Default_Schedule.jpg';
-const dayProgressBar = document.querySelector('#progress-day');
-const nextBreakElt = document.querySelector('#next-break');
-const nextBreakUnitsElt = document.querySelector('#next-break-days');
 const periodElts = [];
 
 const nextBreak = new Date(2022, 2, 11, 14, 50, 0, 0);
@@ -19,34 +21,33 @@ const now = new Date();
 now.setHours(0, 0, 0, 0);
 const breakDays = weekDays(now, nextBreak);
 const updateNextBreak = breakDays === 1;
-nextBreakElt.innerText = `${breakDays}`;
-nextBreakUnitsElt.innerText = ` day${breakDays === 1 ? '' : 's'}`;
+elements.nextBreak.innerText = `${breakDays}`;
+elements.nextBreakUnits.innerText = ` day${breakDays === 1 ? '' : 's'}`;
 
 const updateBreak = () => {
   const n = new Date();
   const s = (nextBreak - n) / 1000;
-  nextBreakElt.innerText = formatTime(s);
+  elements.nextBreak.innerText = formatTime(s);
 };
 
 const speed = 2; // Times to run per second
 
-trayElt.querySelector('#settings-toggle')
+elements.tray.querySelector('#settings-toggle')
   .addEventListener('click', () => {
     settingsElt.classList.toggle('hide');
-    trayElt.querySelector('#settings-toggle')
+    elements.tray.querySelector('#settings-toggle')
       .classList
       .toggle('btn-dark');
   });
 
-trayElt.querySelector('#clock-toggle')
+elements.tray.querySelector('#clock-toggle')
   .addEventListener('click', () => {
     clock.classList.toggle('hide-text');
-    trayElt.querySelector('#clock-toggle')
+    elements.tray.querySelector('#clock-toggle')
       .classList
       .toggle('btn-dark');
   });
 
-const searches = {};
 window.location.search
   .substr(1)
   .split('&')
@@ -55,7 +56,7 @@ window.location.search
     if (k && v) searches[k] = v;
   });
 
-toggle12hr.checked = searches.twelveHour === 'true';
+elements.toggle12hr.checked = searches.twelveHour === 'true';
 searches.twelveHour = searches.twelveHour ?? false;
 
 for (const k in searches) {
@@ -63,21 +64,11 @@ for (const k in searches) {
     searches[k] = searches[k] === 'true';
   }
 }
-searches.update = () => {
-  let s = '?';
-  Object.entries(searches)
-    .forEach(([k, v]) => {
-      if (k !== 'update') {
-        s += `${k}=${v}&`;
-      }
-    });
-  window.location.search = s;
-};
 
 if (searches.lunch === undefined) {
   searches.lunch = 'a';
 }
-lunchSel.value = searches.lunch;
+elements.lunchSel.value = searches.lunch;
 
 let currentSchedule = currentDate.getDay() === 3 ? schedules.advisory : schedules.regular;
 for (const schedule of Object.values(schedules)) {
@@ -153,7 +144,7 @@ function timeLeft(d = new Date()) {
   startTimes.sort((a, b) => a.start - b.start);
 
   if (startTimes[0] === currentPd && startTimes.length > 1) {
-    [_, nextPd] = startTimes;
+    [, nextPd] = startTimes;
   } else {
     [nextPd] = startTimes;
   }
@@ -244,8 +235,8 @@ function updateProgressBar() {
 
     // console.log(dayStart, current, c, period);
     if (c > 0 && c < l) {
-      progressbar.style.width = `${t * 100}%`;
-      progressbararea.title = `${Math.round(t * 100)}%`;
+      elements.progressbar.style.width = `${t * 100}%`;
+      elements.progressbararea.title = `${Math.round(t * 100)}%`;
     }
   });
 }
@@ -292,18 +283,18 @@ function timeLoopAndUpdate(d = new Date()) {
 
   if (updateNextBreak) {
     updateBreak();
-    nextBreakUnitsElt.innerText = '';
+    elements.nextBreakUnits.innerText = '';
   }
 
-  lunchSel.value = searches.lunch;
+  elements.lunchSel.value = searches.lunch;
   const prevSearches = searches;
-  searches.lunch = lunchSel.value;
+  searches.lunch = elements.lunchSel.value;
 
   if (searches.lunch) {
-    lunchSel.value = searches.lunch;
+    elements.lunchSel.value = searches.lunch;
   }
   if (searches.twelveHour !== undefined) {
-    toggle12hr.checked = searches.twelveHour;
+    elements.toggle12hr.checked = searches.twelveHour;
   }
   if (searches !== prevSearches) {
     searches.update();
@@ -385,14 +376,14 @@ function addDayProgressBar() {
     eltProgress.classList.add('progress-bar', 'pd', `bg-${passing ? 'info' : 'primary'}`);
     eltProgress.innerText = passing ? '' : titleCase(period.name);
     eltProgress.style.width = '0%';
-    dayProgressBar.appendChild(eltProgress);
+    elements.dayProgressBar.appendChild(eltProgress);
 
     const eltBlank = document.createElement('div');
     eltBlank.title = titleCase(period.name);
     eltBlank.style = 0;
     eltBlank.classList.add('progress-bar', 'pd', 'bg-none', 'progress-bar-filler');
     eltBlank.style.width = `${period.width * 100}%`;
-    dayProgressBar.appendChild(eltBlank);
+    elements.dayProgressBar.appendChild(eltBlank);
 
     periodElts.push({
       progress: eltProgress,
@@ -401,7 +392,9 @@ function addDayProgressBar() {
   });
 }
 
-alerts.load(); // Load alert modals
-addDayProgressBar();
-timeLoopAndUpdate();
-setInterval(timeLoopAndUpdate, 1000 / speed);
+export const start = async () => {
+  await alerts.load(); // Load alert modals
+  addDayProgressBar();
+  timeLoopAndUpdate();
+  setInterval(timeLoopAndUpdate, 1000 / speed);
+};
