@@ -8,5 +8,10 @@
     "title": "Thank you!",
     "description": "Thank you everyone who uses this website!<br><u>You can click this message to close it.</u>",
     "type": "success"
+  },
+  "cfisd_inc_weather_2Feb2022": {
+    "title": "Potential Freeze",
+    "description": "There is a possibility of inclement weather in our area on Thursday (3 Feb) and Friday (4 Feb).<br>Click <a href=\"https://cfisd.net\">here</a> to learn more.",
+    "type": "info"
   }
 }
