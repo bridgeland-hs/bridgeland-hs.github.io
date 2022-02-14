@@ -34,7 +34,7 @@ const speed = 2; // Times to run per second
 
 elements.tray.querySelector('#settings-toggle')
   .addEventListener('click', () => {
-    settingsElt.classList.toggle('hide');
+    elements.settings.classList.toggle('hide');
     elements.tray.querySelector('#settings-toggle')
       .classList
       .toggle('btn-dark');
