@@ -14,7 +14,7 @@ import elements from './elements.js';
 const defaultImage = '../image/Default_Schedule.jpg';
 const periodElts = [];
 
-const nextBreak = new Date(2022, 2, 11, 14, 50, 0, 0);
+const nextBreak = new Date(2022, 4, 26, 14, 50, 0, 0);
 // const nextBreak = new Date(2021, 10, 29, 14, 50, 0, 0);
 
 const now = new Date();
