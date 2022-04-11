@@ -277,4 +277,38 @@ export default {
       createClass('7', '13:49', '14:50'),
     ],
   },
+  alt_11_april: {
+    date: new Date(2022, 3, 11),
+    before_lunch: [
+      createClass('1', '7:20', '8:12'),
+      createClass('2', '8:18', '9:15'),
+      createClass('3', '9:21', '10:13'),
+    ],
+
+    lunch_a: [
+      createClass('lunch', '10:43', '11:13'),
+      createClass('4', '11:19', '12:12'),
+      createClass('5', '12:18', '13:24'),
+    ],
+    lunch_b: [
+      createClass('4', '10:43', '11:42'),
+      createClass('lunch', '11:42', '12:12'),
+      createClass('5', '12:18', '13:24'),
+    ],
+    lunch_c: [
+      createClass('4', '10:49', '11:42'),
+      createClass('5a', '11:48', '12:18'),
+      createClass('lunch', '12:18', '12:48'),
+      createClass('5b', '12:54', '13:24'),
+    ],
+    lunch_d: [
+      createClass('4', '10:49', '11:42'),
+      createClass('5', '11:48', '12:54'),
+      createClass('lunch', '12:54', '13:24'),
+    ],
+    after_lunch: [
+      createClass('6', '13:30', '14:07'),
+      createClass('7', '14:13', '14:50'),
+    ],
+  },
 };
